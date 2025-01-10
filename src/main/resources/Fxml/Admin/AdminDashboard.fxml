@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cashiersystem.Controllers.Admin.AdminDashboardController">
+   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hello Admin!" AnchorPane.leftAnchor="10.0"
+         AnchorPane.topAnchor="10.0"/>
+</AnchorPane>

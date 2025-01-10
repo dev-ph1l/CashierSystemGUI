@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cashiersystem.Controllers.Waiter.ReportsController">
+    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Get the report you want" AnchorPane.leftAnchor="10.0"
+          AnchorPane.topAnchor="10.0"/>
+    <DatePicker fx:id="report_date_picker" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0"/>
+    <ListView fx:id="report_list_view" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="10.0"
+              AnchorPane.topAnchor="85.0"/>
+</AnchorPane>

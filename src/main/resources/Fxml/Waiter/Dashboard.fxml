@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cashiersystem.Controllers.Waiter.DashboardController">
+    <Text fx:id="greetings_lbl" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello, user" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="0.0" />
+    <VBox prefHeight="700.0" prefWidth="900.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0"
+          AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current time:"/>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="You are working since XXX hours"/>
+    </VBox>
+</AnchorPane>
