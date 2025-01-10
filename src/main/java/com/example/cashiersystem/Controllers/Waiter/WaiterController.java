@@ -19,6 +19,7 @@ public class WaiterController implements Initializable {
             switch (newVal) {
                 case ORDERS -> waiter_parent.setCenter(Model.getInstance().getViewFactory().getOrdersView());
                 case REPORTS -> waiter_parent.setCenter(Model.getInstance().getViewFactory().getReportsView());
+                case ITEMPICKER -> waiter_parent.setCenter(Model.getInstance().getViewFactory().getItemPickerView());
                 default -> waiter_parent.setCenter(Model.getInstance().getViewFactory().getDashboardView());
             }
         });

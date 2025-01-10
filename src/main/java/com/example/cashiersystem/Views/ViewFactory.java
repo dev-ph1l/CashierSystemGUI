@@ -6,9 +6,10 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class ViewFactory {
     //
@@ -18,7 +19,8 @@ public class ViewFactory {
     private final ObjectProperty<WaiterMenuOptions> clientSelectedMenuItem;
     private AnchorPane dashboardView;
     public AnchorPane ordersView;
-    public AnchorPane ReportsView;
+    public AnchorPane reportsView;
+    public AnchorPane itemPickerView;
 
     // Admin Views
     private final ObjectProperty<AdminMenuOptions> adminSelectedMenuItem;
@@ -71,17 +73,26 @@ public class ViewFactory {
         return ordersView;
     }
     public AnchorPane getReportsView() {
-        if (ReportsView == null){
+        if (reportsView == null){
             try {
-                ReportsView = new FXMLLoader(getClass().getResource("/Fxml/Waiter/Reports.fxml")).load();
+                reportsView = new FXMLLoader(getClass().getResource("/Fxml/Waiter/Reports.fxml")).load();
             }catch (Exception e) {
                 e.printStackTrace();
             }
 
         }
-        return ReportsView;
+        return reportsView;
     }
-
+    public AnchorPane getItemPickerView() {
+        if (itemPickerView == null) {
+            try {
+                itemPickerView = new FXMLLoader(getClass().getResource("/Fxml/Waiter/ItemPicker.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return itemPickerView;
+    }
 
     public void showWaiterWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Waiter/Waiter.fxml"));

@@ -2,8 +2,13 @@ package com.example.cashiersystem.Model;
 
 import com.example.cashiersystem.Views.AccountType;
 import com.example.cashiersystem.Views.ViewFactory;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Model {
     private static Model model;
@@ -14,6 +19,7 @@ public class Model {
     // Waiter Data Section
     private final Waiter waiter;
     private boolean waiterLoginSuccessFlag;
+    private final Order order;
 
 
     // Admin Data Section
@@ -25,7 +31,8 @@ public class Model {
         // Client Data Section
 
         this.waiterLoginSuccessFlag = false;
-        this.waiter = new Waiter("", "");
+        this.waiter = new Waiter("", "", -1);
+        this.order = new Order(-1, -1, -1, null);
 
         // Admin Data Section
     }
@@ -51,6 +58,10 @@ public class Model {
     /*
     * Waiter Method Section
     * */
+
+
+
+
     public boolean getWaiterLoginSuccessFlag() {return this.waiterLoginSuccessFlag;}
     public void setWaiterLoginSuccessFlag(boolean flag) {this.waiterLoginSuccessFlag = flag;}
 
@@ -58,12 +69,13 @@ public class Model {
         return waiter;
     }
 
-    public void evaluateClientCred(String name, String password) {
-        ResultSet rs = databaseDriver.getWaiterData(name, password);
+    public void evaluateClientCred(String username, String password) {
+        ResultSet rs = databaseDriver.getWaiterData(username, password);
         try {
             if (rs.isBeforeFirst() && rs.next()){
                 this.waiter.nameProperty().set(rs.getString("username"));
                 this.waiter.passwordProperty().set(rs.getString("password"));
+                this.waiter.waiterIdProperty().set(rs.getInt("id"));
 
                 this.waiterLoginSuccessFlag = true;
             }
@@ -72,7 +84,11 @@ public class Model {
         }
     }
 
-    /*
+    public Order getOrder() {
+        return order;
+    }
+
+        /*
      * Admin Method Section
      * */
 }

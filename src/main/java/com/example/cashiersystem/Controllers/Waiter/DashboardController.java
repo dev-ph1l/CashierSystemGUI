@@ -1,5 +1,6 @@
 package com.example.cashiersystem.Controllers.Waiter;
 
+import com.example.cashiersystem.Model.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,6 +16,6 @@ public class DashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        greetings_lbl.setText("Hello " + Model.getInstance().getWaiter().nameProperty().get());
     }
 }

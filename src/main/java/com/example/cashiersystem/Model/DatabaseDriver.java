@@ -1,5 +1,6 @@
 package com.example.cashiersystem.Model;
 
+import javax.xml.transform.Source;
 import java.sql.*;
 
 public class DatabaseDriver {
@@ -21,19 +22,45 @@ public class DatabaseDriver {
     *  Waiter Section
     * */
 
-    public ResultSet getWaiterData(String name, String password) {
+    public ResultSet getWaiterData(String username, String password) {
         String query = "SELECT * FROM waiters WHERE username = ? AND password = ?";
         try {
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
-            preparedStatement.setString(1, name);
+            preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
 
             return preparedStatement.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public void createOrder(Integer tableId) {
+        Model.getInstance().getOrder().waiterIdProperty().set(Model.getInstance().getWaiter().waiterIdProperty().get());
+        Model.getInstance().getOrder().tableIdProperty().set(tableId);
+        // SQL query to insert a new order into the orders table (with the current date)
+        String insertOrderQuery = "INSERT INTO orders (table_id, order_date, waiter_id) VALUES (?, NOW(), ?)";
+
+        int orderId = -1;
+        try (Connection connection = DatabaseDriver.getConnection()) {
+            // Prepare the query to insert the new order into the orders table
+            PreparedStatement orderStatement = connection.prepareStatement(insertOrderQuery, PreparedStatement.RETURN_GENERATED_KEYS);
+            orderStatement.setInt(1, Model.getInstance().getOrder().tableIdProperty().get());
+            orderStatement.setInt(2, Model.getInstance().getOrder().waiterIdProperty().get()); // Get the logged-in waiter ID
+            orderStatement.executeUpdate();
+
+
+            // Retrieve the generated order ID after inserting the order
+            var generatedKeys = orderStatement.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                orderId = generatedKeys.getInt(1); // Get the generated order ID
+                Model.getInstance().getOrder().orderIdProperty().set(orderId);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

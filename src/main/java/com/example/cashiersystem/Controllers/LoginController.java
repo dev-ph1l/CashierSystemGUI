@@ -1,6 +1,7 @@
 package com.example.cashiersystem.Controllers;
 
 import com.example.cashiersystem.Model.Model;
+import com.example.cashiersystem.Model.Waiter;
 import com.example.cashiersystem.Views.AccountType;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -44,6 +45,7 @@ public class LoginController implements Initializable {
             if (Model.getInstance().getWaiterLoginSuccessFlag()) {
                 Model.getInstance().getViewFactory().showWaiterWindow();
                 // Close the login stage
+                System.out.println(Model.getInstance().getWaiter().waiterIdProperty().get());
                 Model.getInstance().getViewFactory().closeStage(stage);
             } else {
                 waiter_name_field.setText("");
