@@ -1,1 +1,1 @@
-Run the App.example in 
+Run the App.example in src/main/java/com/example/cashiersystem/
