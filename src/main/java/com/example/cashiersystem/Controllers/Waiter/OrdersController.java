@@ -27,6 +27,5 @@ public class OrdersController implements Initializable {
     private void onTableClicked(int tableId) {
         Model.getInstance().getDatabaseDriver().createOrder(tableId);
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(WaiterMenuOptions.ITEMPICKER);
-
     }
 }
