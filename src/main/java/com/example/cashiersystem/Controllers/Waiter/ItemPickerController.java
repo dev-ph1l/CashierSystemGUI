@@ -1,5 +1,6 @@
 package com.example.cashiersystem.Controllers.Waiter;
 
+import com.example.cashiersystem.Model.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
@@ -17,6 +18,18 @@ public class ItemPickerController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        cola_btn.setOnAction(event -> addItem(1));
+        water_btn.setOnAction(event -> addItem(2));
 
+        place_order_btn.setOnAction(event -> placeOrder());
     }
+
+    private void addItem(int id) {
+        Model.getInstance().getOrder().addItemId(id);
+    }
+
+    private void placeOrder() {
+        Model.getInstance().getDatabaseDriver().createOrder();
+    }
+
 }

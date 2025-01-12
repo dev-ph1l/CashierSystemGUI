@@ -1,7 +1,7 @@
 package com.example.cashiersystem.Model;
 
-import javax.xml.transform.Source;
 import java.sql.*;
+import java.util.Map;
 
 public class DatabaseDriver {
     private static final String URL = "jdbc:mysql://127.0.0.1:3360/datenbank_boniersystem";
@@ -38,31 +38,94 @@ public class DatabaseDriver {
         }
     }
 
-    public void createOrder(Integer tableId) {
-        Model.getInstance().getOrder().waiterIdProperty().set(Model.getInstance().getWaiter().waiterIdProperty().get());
-        Model.getInstance().getOrder().tableIdProperty().set(tableId);
+    // creates an order, to which the items ordered are connected (via the order_id)
+    public void createOrder() {
         // SQL query to insert a new order into the orders table (with the current date)
         String insertOrderQuery = "INSERT INTO orders (table_id, order_date, waiter_id) VALUES (?, NOW(), ?)";
 
-        int orderId = -1;
+        // SQL query to insert an order item into the order_items table
+        String insertOrderItemQuery = "INSERT INTO order_items (order_id, menu_item_id, quantity, order_date) VALUES (?, ?, ?, ?)";
+
         try (Connection connection = DatabaseDriver.getConnection()) {
-            // Prepare the query to insert the new order into the orders table
+            // Step 1: Insert the order and get the generated order_id
             PreparedStatement orderStatement = connection.prepareStatement(insertOrderQuery, PreparedStatement.RETURN_GENERATED_KEYS);
             orderStatement.setInt(1, Model.getInstance().getOrder().tableIdProperty().get());
-            orderStatement.setInt(2, Model.getInstance().getOrder().waiterIdProperty().get()); // Get the logged-in waiter ID
+            orderStatement.setInt(2, Model.getInstance().getOrder().waiterIdProperty().get());
             orderStatement.executeUpdate();
 
-
-            // Retrieve the generated order ID after inserting the order
-            var generatedKeys = orderStatement.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                orderId = generatedKeys.getInt(1); // Get the generated order ID
-                Model.getInstance().getOrder().orderIdProperty().set(orderId);
+            // Step 2: Retrieve the generated order_id
+            int orderId = -1;
+            try (ResultSet generatedKeys = orderStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    orderId = generatedKeys.getInt(1); // Get the generated order ID
+                }
             }
-        } catch (Exception e) {
+
+            // Step 3: Prepare the order item insertion statement
+            PreparedStatement orderItemStatement = connection.prepareStatement(insertOrderItemQuery);
+
+            // Step 4: Loop through the itemMap and insert each order item
+            Map<Integer, Integer> itemMap = Model.getInstance().getOrder().getItemQuantities(); // Get the item quantities map
+            for (Map.Entry<Integer, Integer> entry : itemMap.entrySet()) {
+                int itemId = entry.getKey();
+                int itemQuantity = entry.getValue();
+
+                // Set values for each order item
+                orderItemStatement.setInt(1, orderId); // Set the order ID
+                orderItemStatement.setInt(2, itemId); // Set the menu item ID
+                orderItemStatement.setInt(3, itemQuantity); // Set the quantity
+                orderItemStatement.setTimestamp(4, java.sql.Timestamp.valueOf(java.time.LocalDateTime.now())); // Set the order date
+                orderItemStatement.executeUpdate(); // Execute the insert query for the order item
+            }
+
+            Model.getInstance().getOrder().clearItems();
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+
+
+    public void getDailyReportInfo(String date) {
+        String query = """
+                SELECT\s
+                            COUNT(DISTINCT o.id) AS total_orders,
+                            COUNT(DISTINCT CASE WHEN w.id = ? THEN o.id END) AS waiter_orders,
+                            SUM(oi.quantity) AS total_items_ordered,
+                            SUM(oi.quantity * m.price) AS total_price,
+                            SUM(oi.quantity * m.purchase_price) AS total_purchase_cost
+                        FROM orders o
+                        JOIN order_items oi ON o.id = oi.order_id
+                        JOIN menu_items m ON oi.menu_item_id = m.id
+                        JOIN waiters w ON o.waiter_id = w.id
+                        WHERE DATE(o.order_date) = ?;
+        """;
+        try (Connection connection = DatabaseDriver.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, Model.getInstance().getWaiter().waiterIdProperty().get());
+            preparedStatement.setString(2, date);
+
+            // Execute query and process results
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                if (rs.next()) {
+                    Model.getInstance().getReport().totalOrdersProperty().set(rs.getInt("total_orders"));
+                    Model.getInstance().getReport().totalOrdersByWaiterProperty().set(rs.getInt("waiter_orders"));
+                    Model.getInstance().getReport().totalItemsOrderedProperty().set(rs.getInt("total_items_ordered"));
+                    Model.getInstance().getReport().totalRevenueProperty().set(rs.getDouble("total_price"));
+                    Model.getInstance().getReport().totalPurchaseCostProperty().set(rs.getDouble("total_purchase_cost"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getMonthlyReportInfo(String date) {
+
+    }
+
 
     /*
     *  Admin Section

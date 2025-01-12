@@ -25,6 +25,6 @@
       <Label fx:id="password_lbl" text="Password"/>
       <TextField fx:id="waiter_password_field"/>
       <Button fx:id="login_btn" mnemonicParsing="false" text="Button"/>
-      <Label fx:id="error_lbl" text="Error"/>
+      <Label fx:id="error_lbl" text=""/>
    </VBox>
 </AnchorPane>

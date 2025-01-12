@@ -20,6 +20,7 @@ public class Model {
     private final Waiter waiter;
     private boolean waiterLoginSuccessFlag;
     private final Order order;
+    private final Report report;
 
 
     // Admin Data Section
@@ -32,7 +33,8 @@ public class Model {
 
         this.waiterLoginSuccessFlag = false;
         this.waiter = new Waiter("", "", -1);
-        this.order = new Order(-1, -1, -1, null);
+        this.order = new Order(-1, -1, -1, null, null, null);
+        this.report = new Report(null,null, null, null , null, null, null);
 
         // Admin Data Section
     }
@@ -58,10 +60,6 @@ public class Model {
     /*
     * Waiter Method Section
     * */
-
-
-
-
     public boolean getWaiterLoginSuccessFlag() {return this.waiterLoginSuccessFlag;}
     public void setWaiterLoginSuccessFlag(boolean flag) {this.waiterLoginSuccessFlag = flag;}
 
@@ -88,6 +86,9 @@ public class Model {
         return order;
     }
 
+    public Report getReport(){
+        return report;
+    }
         /*
      * Admin Method Section
      * */

@@ -10,5 +10,6 @@ module com.example.cashiersystem {
     exports com.example.cashiersystem.Controllers;
     exports com.example.cashiersystem.Controllers.Waiter to javafx.fxml;
     exports com.example.cashiersystem.Controllers.Admin to javafx.fxml;
+    exports com.example.cashiersystem.Views to javafx.fxml;
     opens com.example.cashiersystem.Controllers to javafx.fxml;
 }

@@ -22,7 +22,7 @@ public class WaiterMenuController implements Initializable {
     private void addListeners() {
         dashboard_btn.setOnAction(event -> onDashboard());
         orders_btn.setOnAction(event -> onOrders());
-        reports_btn.setOnAction(event ->onReports());
+        reports_btn.setOnAction(event -> onReports());
     }
 
     private void onDashboard() {

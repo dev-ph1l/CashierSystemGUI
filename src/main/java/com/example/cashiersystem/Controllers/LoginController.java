@@ -50,7 +50,7 @@ public class LoginController implements Initializable {
             } else {
                 waiter_name_field.setText("");
                 waiter_password_field.setText("");
-                System.out.println("ERROR");        // use error on screen
+                error_lbl.setText("Error, try again!");
             }
         } else {
             Model.getInstance().getViewFactory().showAdminWindow();
