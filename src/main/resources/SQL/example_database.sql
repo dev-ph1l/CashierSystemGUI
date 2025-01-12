@@ -55,8 +55,13 @@ UPDATE menu_items SET purchase_price = 1.00 WHERE id = 5;  -- Pommes
 
 CREATE TABLE waiters (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(50) NOT NULL UNIQUE,
-    last_name VARCHAR(50) NOT NULL UNIQUE,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE admins (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(100) NOT NULL
 );
 
@@ -66,5 +71,8 @@ ALTER TABLE orders ADD COLUMN waiter_id INT NOT NULL;
 ALTER TABLE orders ADD CONSTRAINT fk_waiter FOREIGN KEY (waiter_id) REFERENCES waiters(id);
 
 INSERT INTO waiters (username, password) VALUES
-('Alice', 'Jones' 'password123'),
-('Bob', 'Williams' 'securepass');
+('Alice', 'password123'),
+('Bob', 'securepass');
+
+INSERT INTO admins (username, password) VALUES
+('root', 'root');
