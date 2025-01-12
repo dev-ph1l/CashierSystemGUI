@@ -20,10 +20,10 @@
          AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="20.0">
       <Label text="Choose Your Account Type"/>
       <ChoiceBox fx:id="account_selector" prefWidth="150.0"/>
-      <Label fx:id="waiter_name_lbl" text="Name"/>
-      <TextField fx:id="waiter_name_field"/>
+      <Label fx:id="name_lbl" text="Name"/>
+      <TextField fx:id="name_field"/>
       <Label fx:id="password_lbl" text="Password"/>
-      <TextField fx:id="waiter_password_field"/>
+      <TextField fx:id="password_field"/>
       <Button fx:id="login_btn" mnemonicParsing="false" text="Button"/>
       <Label fx:id="error_lbl" text=""/>
    </VBox>

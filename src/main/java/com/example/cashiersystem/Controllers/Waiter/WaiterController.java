@@ -7,9 +7,6 @@ import javafx.scene.layout.BorderPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.example.cashiersystem.Views.WaiterMenuOptions.ORDERS;
-import static com.example.cashiersystem.Views.WaiterMenuOptions.REPORTS;
-
 public class WaiterController implements Initializable {
     public BorderPane waiter_parent;
 

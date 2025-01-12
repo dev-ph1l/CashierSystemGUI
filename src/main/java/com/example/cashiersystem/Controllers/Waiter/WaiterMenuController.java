@@ -4,6 +4,7 @@ import com.example.cashiersystem.Model.Model;
 import com.example.cashiersystem.Views.WaiterMenuOptions;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,6 +24,7 @@ public class WaiterMenuController implements Initializable {
         dashboard_btn.setOnAction(event -> onDashboard());
         orders_btn.setOnAction(event -> onOrders());
         reports_btn.setOnAction(event -> onReports());
+        logout_btn.setOnAction(event -> onLogout());
     }
 
     private void onDashboard() {
@@ -35,5 +37,11 @@ public class WaiterMenuController implements Initializable {
 
     private void onReports() {
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(WaiterMenuOptions.REPORTS);
+    }
+
+    private void onLogout() {
+        Stage stage = (Stage) logout_btn.getScene().getWindow();
+        stage.close();
+        Model.getInstance().getViewFactory().showLoginWindow();
     }
 }

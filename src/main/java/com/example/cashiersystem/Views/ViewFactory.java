@@ -9,8 +9,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class ViewFactory {
     //
     private AccountType loginAccountType;
@@ -32,14 +30,6 @@ public class ViewFactory {
         this.loginAccountType = AccountType.WAITER;
         this.clientSelectedMenuItem = new SimpleObjectProperty<>();
         this.adminSelectedMenuItem = new SimpleObjectProperty<>();
-    }
-
-    public AccountType getLoginAccountType() {
-        return loginAccountType;
-    }
-
-    public void setLoginAccountType(AccountType loginAccountType) {
-        this.loginAccountType = loginAccountType;
     }
 
     /*
@@ -137,6 +127,11 @@ public class ViewFactory {
         loader.setController(controller);
         createStage(loader);
     }
+
+
+    /*
+    *  Utilites Section
+    * */
 
     public void showLoginWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Login.fxml"));

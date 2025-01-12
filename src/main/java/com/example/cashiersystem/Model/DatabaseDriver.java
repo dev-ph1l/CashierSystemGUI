@@ -1,5 +1,7 @@
 package com.example.cashiersystem.Model;
 
+import com.example.cashiersystem.Views.WaiterMenuOptions;
+
 import java.sql.*;
 import java.util.Map;
 
@@ -79,6 +81,7 @@ public class DatabaseDriver {
             }
 
             Model.getInstance().getOrder().clearItems();
+            Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(WaiterMenuOptions.ORDERS);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -130,6 +133,22 @@ public class DatabaseDriver {
     /*
     *  Admin Section
     * */
+
+    public ResultSet getAdminData(String username, String password) {
+        String query = "SELECT * FROM admins WHERE username = ? AND password = ?";
+        try {
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+
+            return preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 
     /*

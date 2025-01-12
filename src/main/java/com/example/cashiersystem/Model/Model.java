@@ -2,13 +2,8 @@ package com.example.cashiersystem.Model;
 
 import com.example.cashiersystem.Views.AccountType;
 import com.example.cashiersystem.Views.ViewFactory;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class Model {
     private static Model model;
@@ -24,6 +19,8 @@ public class Model {
 
 
     // Admin Data Section
+    private final Admin admin;
+    private boolean adminLoginSuccessFlag;
 
     private Model() {
         this.viewFactory = new ViewFactory();
@@ -37,6 +34,8 @@ public class Model {
         this.report = new Report(null,null, null, null , null, null, null);
 
         // Admin Data Section
+        this.adminLoginSuccessFlag = false;
+        this.admin = new Admin("", "", -1);
     }
 
     public static synchronized Model getInstance() {
@@ -67,7 +66,7 @@ public class Model {
         return waiter;
     }
 
-    public void evaluateClientCred(String username, String password) {
+    public void evaluateWaiterCred(String username, String password) {
         ResultSet rs = databaseDriver.getWaiterData(username, password);
         try {
             if (rs.isBeforeFirst() && rs.next()){
@@ -75,7 +74,7 @@ public class Model {
                 this.waiter.passwordProperty().set(rs.getString("password"));
                 this.waiter.waiterIdProperty().set(rs.getInt("id"));
 
-                this.waiterLoginSuccessFlag = true;
+                Model.getInstance().setWaiterLoginSuccessFlag(true);
             }
         } catch (Exception e){
             e.printStackTrace();
@@ -92,4 +91,22 @@ public class Model {
         /*
      * Admin Method Section
      * */
+
+    public void evaluateAdminCred(String username, String password) {
+            ResultSet rs = databaseDriver.getAdminData(username, password);
+            try {
+                if (rs.isBeforeFirst() && rs.next()){
+                    this.admin.nameProperty().set(rs.getString("username"));
+                    this.admin.passwordProperty().set(rs.getString("password"));
+                    this.admin.AdminIdProperty().set(rs.getInt("id"));
+
+                    Model.getInstance().setAdminLoginSuccessFlag(true);
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+    public boolean getAdminLoginSuccessFlag() {return this.adminLoginSuccessFlag;}
+    public void setAdminLoginSuccessFlag(boolean flag) {this.adminLoginSuccessFlag = flag;}
 }

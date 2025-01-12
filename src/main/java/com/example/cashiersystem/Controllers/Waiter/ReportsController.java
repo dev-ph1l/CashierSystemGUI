@@ -2,7 +2,6 @@ package com.example.cashiersystem.Controllers.Waiter;
 
 import com.example.cashiersystem.Model.Model;
 import com.example.cashiersystem.Model.Report;
-import com.example.cashiersystem.Views.AccountType;
 import com.example.cashiersystem.Views.Months;
 import com.example.cashiersystem.Views.Years;
 import javafx.collections.FXCollections;
@@ -70,9 +69,9 @@ public class ReportsController implements Initializable {
         setLabelText(tot_am_of_orders_lbl, report.totalOrdersProperty().get());
         setLabelText(tot_am_of_orders_you_lbl, report.totalOrdersByWaiterProperty().get());
         setLabelText(tot_am_of_items_lbl, report.totalItemsOrderedProperty().get());
-        setLabelText(total_revenue_lbl, report.totalRevenueProperty().get());
-        setLabelText(total_purchase_price_lbl, report.totalPurchaseCostProperty().get());
-        setLabelText(total_profit_lbl, report.totalProfitProperty().get());
+        setLabelText(total_revenue_lbl, report.totalRevenueProperty().get() + " $");
+        setLabelText(total_purchase_price_lbl, report.totalPurchaseCostProperty().get() + " $");
+        setLabelText(total_profit_lbl, report.totalProfitProperty().get() + " $");
     }
 
     private void setLabelText(Label label, Object value) {

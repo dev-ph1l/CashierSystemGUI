@@ -1,6 +1,7 @@
 package com.example.cashiersystem.Controllers.Waiter;
 
 import com.example.cashiersystem.Model.Model;
+import com.example.cashiersystem.Views.WaiterMenuOptions;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
@@ -20,8 +21,16 @@ public class ItemPickerController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cola_btn.setOnAction(event -> addItem(1));
         water_btn.setOnAction(event -> addItem(2));
+        //beer
+        burger_btn.setOnAction(event -> addItem(4));
+        fries_btn.setOnAction(event -> addItem(5));
 
         place_order_btn.setOnAction(event -> placeOrder());
+        clear_all_items_btn.setOnAction(event -> Model.getInstance().getOrder().clearItems());
+        abort_order_btn.setOnAction(event -> {
+            Model.getInstance().getOrder().clearItems();
+            Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(WaiterMenuOptions.ORDERS);
+        });
     }
 
     private void addItem(int id) {

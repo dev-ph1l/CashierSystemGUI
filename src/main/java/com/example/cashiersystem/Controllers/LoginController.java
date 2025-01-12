@@ -1,7 +1,6 @@
 package com.example.cashiersystem.Controllers;
 
 import com.example.cashiersystem.Model.Model;
-import com.example.cashiersystem.Model.Waiter;
 import com.example.cashiersystem.Views.AccountType;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -21,10 +20,10 @@ public class LoginController implements Initializable {
 
     @FXML
     public ChoiceBox<AccountType> account_selector;
-    public TextField waiter_name_field;
-    public TextField waiter_password_field;
+    public TextField name_field;
+    public TextField password_field;
     public Button login_btn;
-    public Label waiter_name_lbl;
+    public Label name_lbl;
     public Label password_lbl;
     public Label error_lbl;
 
@@ -32,28 +31,39 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         account_selector.setItems(FXCollections.observableArrayList(AccountType.WAITER, AccountType.ADMIN));
-        account_selector.setValue(Model.getInstance().getViewFactory().getLoginAccountType());
-        account_selector.valueProperty().addListener(observable -> Model.getInstance().getViewFactory().setLoginAccountType(account_selector.getValue()));
+        account_selector.setValue(Model.getInstance().getLoginAccountType());
+        account_selector.valueProperty().addListener(observable -> Model.getInstance().setLoginAccountType(account_selector.getValue()));
         login_btn.setOnAction(event -> onLogin());
     }
 
     private void onLogin() {
         Stage stage = (Stage) error_lbl.getScene().getWindow();         //workaround
-        if (Model.getInstance().getViewFactory().getLoginAccountType() == AccountType.WAITER) {
-            // Evaluate Client Login Credentials
-            Model.getInstance().evaluateClientCred(waiter_name_field.getText(), waiter_password_field.getText()); // maybe check if it is empty
+        // WAITER LOGIN
+        if (Model.getInstance().getLoginAccountType() == AccountType.WAITER) {
+            // Evaluate Waiter Login Credentials
+            Model.getInstance().evaluateWaiterCred(name_field.getText(), password_field.getText()); // maybe check if it is empty
             if (Model.getInstance().getWaiterLoginSuccessFlag()) {
                 Model.getInstance().getViewFactory().showWaiterWindow();
                 // Close the login stage
-                System.out.println(Model.getInstance().getWaiter().waiterIdProperty().get());
                 Model.getInstance().getViewFactory().closeStage(stage);
+                error_lbl.setText("");
             } else {
-                waiter_name_field.setText("");
-                waiter_password_field.setText("");
+                name_field.setText("");
+                password_field.setText("");
                 error_lbl.setText("Error, try again!");
             }
-        } else {
-            Model.getInstance().getViewFactory().showAdminWindow();
+        // ADMIN LOGIN
+        } else if (Model.getInstance().getLoginAccountType() == AccountType.ADMIN){
+            Model.getInstance().evaluateAdminCred(name_field.getText(), password_field.getText());
+            if(Model.getInstance().getAdminLoginSuccessFlag()) {
+                Model.getInstance().getViewFactory().showAdminWindow();
+                Model.getInstance().getViewFactory().closeStage(stage);
+                error_lbl.setText("");
+            } else {
+                name_field.setText("");
+                password_field.setText("");
+                error_lbl.setText("Error, try again!");
+            }
         }
 
     }

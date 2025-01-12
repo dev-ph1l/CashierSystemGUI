@@ -44,25 +44,22 @@ public class Order {
         return itemIds;
     }
 
-    // method to add an item
+    // order items methods
     public void addItemId(int itemId) {
-        // Überprüfen, ob das Item bereits in der Bestellung ist
         if (itemCountMap.containsKey(itemId)) {
             int currentCount = itemCountMap.get(itemId);
-            itemCountMap.put(itemId, currentCount + 1);  // Menge um 1 erhöhen
+            itemCountMap.put(itemId, currentCount + 1);
         } else {
-            itemCountMap.put(itemId, 1);  // Neues Item mit einer Menge von 1 hinzufügen
-            itemIds.add(itemId);  // Nur einmal zur Liste hinzufügen
+            itemCountMap.put(itemId, 1);
+            itemIds.add(itemId);
         }
     }
 
-    // Methode, um alle Items zu löschen
     public void clearItems() {
         this.itemIds.clear();
         this.itemCountMap.clear();  // Löscht auch das Mengenmap
     }
 
-    // Methode, um die Mengen der Items zu erhalten
     public Map<Integer, Integer> getItemQuantities() {
         return itemCountMap;
     }
