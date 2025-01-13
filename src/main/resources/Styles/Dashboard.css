@@ -1,0 +1,13 @@
+.dashboard_dontainer{
+    -fx-background-color: #EFE9E1;;
+}
+
+.greetings_container {
+    -fx-alignment: center_left;
+}
+.greetings_container Text {
+    -fx-font-size: 25;
+    -fx-fill: #111111;
+    -fx-font-family: "Lucida Console";
+    -fx-font-weight: bold;
+}
