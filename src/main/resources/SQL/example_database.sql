@@ -15,7 +15,8 @@ CREATE TABLE menu_items (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     category VARCHAR(50) NOT NULL,
-    price DECIMAL(10, 2) NOT NULL
+    price DECIMAL(10, 2) NOT NULL,
+    purchase_price DECIMAL(10, 2) NOT NULL
 );
 
 -- Tabelle für Bestellungen
@@ -40,18 +41,8 @@ CREATE TABLE order_items (
 INSERT INTO tables (name) VALUES ('Table 1'), ('Table 2'), ('Table 3'),('Table 4'), ('Table 5'), ('Table 6'),('Table 7'), ('Table 8'), ('Table 9'),('Table 10'), ('Table 11');
 
 -- Beispiel-Daten für Menüartikel
-INSERT INTO menu_items (name, category, price) VALUES
-('Cola', 'Getränk', 2.50),
-('Wasser', 'Getränk', 1.50),
-('Bier', 'Getränk', 3.00),
-('Burger', 'Essen', 5.50),
-('Pommes', 'Essen', 3.00);
-
-UPDATE menu_items SET purchase_price = 1.00 WHERE id = 1;  -- Cola
-UPDATE menu_items SET purchase_price = 0.50 WHERE id = 2;  -- Wasser
-UPDATE menu_items SET purchase_price = 1.50 WHERE id = 3;  -- Bier
-UPDATE menu_items SET purchase_price = 2.50 WHERE id = 4;  -- Burger
-UPDATE menu_items SET purchase_price = 1.00 WHERE id = 5;  -- Pommes
+INSERT INTO menu_items (name, category, price, purchase_price) VALUES
+('Cola', 'Getränk', 2.50, 2.00)
 
 CREATE TABLE waiters (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -76,3 +67,9 @@ INSERT INTO waiters (username, password) VALUES
 
 INSERT INTO admins (username, password) VALUES
 ('root', 'root');
+
+
+select * from menu_items;
+select * from order_items;
+
+truncate table menu_items;

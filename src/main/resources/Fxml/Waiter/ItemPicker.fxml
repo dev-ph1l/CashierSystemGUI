@@ -1,64 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cashiersystem.Controllers.Waiter.ItemPickerController">
-    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Click on an item to add it to the order"
-          AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0"/>
-    <VBox prefHeight="760.0" prefWidth="480.0" AnchorPane.bottomAnchor="210.0" AnchorPane.leftAnchor="10.0"
-          AnchorPane.rightAnchor="510.0" AnchorPane.topAnchor="30.0">
-        <AnchorPane prefHeight="560.0" prefWidth="480.0">
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Drinks" wrappingWidth="104.33984375"
-                  AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" stroke="BLACK"
-                       strokeType="INSIDE" width="75.0" AnchorPane.leftAnchor="5.0"
-                       AnchorPane.topAnchor="30.0"/>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" stroke="BLACK"
-                       strokeType="INSIDE" width="75.0" AnchorPane.leftAnchor="85.0"
-                       AnchorPane.topAnchor="30.0"/>
-            <Button fx:id="water_btn" layoutX="20.0" layoutY="55.0" mnemonicParsing="false" text="water"/>
-            <Button fx:id="cola_btn" layoutX="104.0" layoutY="55.0" mnemonicParsing="false" text="cola"/>
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" styleClass="item_picker" stylesheets="@../../Styles/ItemPicker.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cashiersystem.Controllers.Waiter.ItemPickerController">
+    <VBox prefHeight="760.0" prefWidth="480.0" styleClass="item_picker_drinks" AnchorPane.bottomAnchor="210.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="505.0" AnchorPane.topAnchor="50.0">
+        <AnchorPane prefHeight="580.0" prefWidth="480.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-non-alcoholic" width="70.0" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="5.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-non-alcoholic" width="70.0" AnchorPane.leftAnchor="87.5" AnchorPane.topAnchor="5.0" />
+            <Button fx:id="water_03_btn" layoutX="12.0" layoutY="25.0" mnemonicParsing="false" text="Water (0.3 l)" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="159.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-non-alcoholic" width="70.0" AnchorPane.leftAnchor="167.5" AnchorPane.topAnchor="5.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="224.0" layoutY="-8.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-non-alcoholic" width="70.0" AnchorPane.leftAnchor="247.5" AnchorPane.topAnchor="5.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="336.0" layoutY="2.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-non-alcoholic" width="70.0" AnchorPane.leftAnchor="327.5" AnchorPane.topAnchor="5.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="400.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-non-alcoholic" width="70.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="5.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="407.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-non-alcoholic" width="70.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="85.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="328.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-non-alcoholic" width="70.0" AnchorPane.leftAnchor="327.5" AnchorPane.topAnchor="85.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="8.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-non-alcoholic" width="70.0" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="85.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="88.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-non-alcoholic" width="70.0" AnchorPane.leftAnchor="87.5" AnchorPane.topAnchor="85.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="168.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-non-alcoholic" width="70.0" AnchorPane.leftAnchor="167.5" AnchorPane.rightAnchor="247.0" AnchorPane.topAnchor="85.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="248.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-non-alcoholic" width="70.0" AnchorPane.leftAnchor="247.5" AnchorPane.rightAnchor="167.0" AnchorPane.topAnchor="85.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="407.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-alcoholic" width="70.0" AnchorPane.rightAnchor="7.5" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="328.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-alcoholic" width="70.0" AnchorPane.leftAnchor="327.5" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="248.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-alcoholic" width="70.0" AnchorPane.leftAnchor="247.5" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="168.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-alcoholic" width="70.0" AnchorPane.leftAnchor="167.5" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="88.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-alcoholic" width="70.0" AnchorPane.leftAnchor="87.5" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="8.0" layoutY="235.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-alcoholic" width="70.0" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="245.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="407.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-alcoholic" width="70.0" AnchorPane.rightAnchor="7.5" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="328.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-alcoholic" width="70.0" AnchorPane.leftAnchor="327.5" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="248.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-alcoholic" width="70.0" AnchorPane.leftAnchor="247.5" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="168.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-non-alcoholic" width="70.0" AnchorPane.leftAnchor="167.5" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="88.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-non-alcoholic" width="70.0" AnchorPane.leftAnchor="87.5" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="8.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-non-alcoholic" width="70.0" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="165.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="8.0" layoutY="315.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-cocktails" width="70.0" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="325.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="88.0" layoutY="325.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-cocktails" width="70.0" AnchorPane.leftAnchor="87.5" AnchorPane.topAnchor="325.0" />
+         <Button fx:id="draft_beer_btn" layoutX="252.0" layoutY="181.0" mnemonicParsing="false" text="Draft Beer (0.5 l)" />
+         <Button fx:id="wheat_beer_btn" layoutX="332.0" layoutY="181.0" mnemonicParsing="false" text="Wheat Beer (0.5 l)" />
+         <Button fx:id="aperol_spritz_btn" layoutX="411.0" layoutY="185.0" mnemonicParsing="false" text="Aperol Spritz" />
+         <Button fx:id="mojito_btn" layoutX="338.0" layoutY="265.0" mnemonicParsing="false" text="Mojito" />
+         <Button fx:id="gin_tonic_btn" layoutX="411.0" layoutY="265.0" mnemonicParsing="false" text="Gin Tonic" />
+         <Button fx:id="whisky_sour_btn" layoutX="92.0" layoutY="265.0" mnemonicParsing="false" text="Whisky Sour" />
+         <Button fx:id="red_wine_btn" layoutX="172.0" layoutY="265.0" mnemonicParsing="false" text="Red Wine (0.2 l)" />
+         <Button fx:id="white_wine_btn" layoutX="252.0" layoutY="261.0" mnemonicParsing="false" text="White Wine (0.2 l)" />
+         <Button fx:id="tequila_shot_btn" layoutX="12.0" layoutY="265.0" mnemonicParsing="false" text="Tequila Shot" />
+         <Button fx:id="espresso_btn" layoutX="92.0" layoutY="185.0" mnemonicParsing="false" text="Espresso" />
+         <Button fx:id="cosmopolitan_btn" layoutX="18.0" layoutY="345.0" mnemonicParsing="false" text="Cosmop" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="249.0" layoutY="401.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="247.5" AnchorPane.topAnchor="405.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="169.0" layoutY="401.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="167.5" AnchorPane.topAnchor="405.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="88.0" layoutY="401.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="87.5" AnchorPane.topAnchor="405.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="8.0" layoutY="401.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="405.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="408.0" layoutY="325.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="325.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="329.0" layoutY="325.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="327.5" AnchorPane.topAnchor="325.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="249.0" layoutY="325.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-cocktails" width="70.0" AnchorPane.leftAnchor="247.5" AnchorPane.topAnchor="325.0" />
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="169.0" layoutY="325.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-cocktails" width="70.0" AnchorPane.leftAnchor="167.5" AnchorPane.topAnchor="325.0" />
+         <Button fx:id="caipirinha_btn" layoutX="92.0" layoutY="345.0" mnemonicParsing="false" text="Caipirinha" />
+         <Button fx:id="long_island_iced_tea_btn" layoutX="172.0" layoutY="341.0" mnemonicParsing="false" text="Long Island Iced Tea" />
+         <Button fx:id="pina_colada_btn" layoutX="252.0" layoutY="345.0" mnemonicParsing="false" text="Pina Colada" />
+         <Button fx:id="water_05_btn" layoutX="92.0" layoutY="25.0" mnemonicParsing="false" text="Water (0.5 l)" />
+         <Button fx:id="cola_btn" layoutX="332.0" layoutY="25.0" mnemonicParsing="false" text="Cola (0.5 l)" />
+         <Button fx:id="sparkling_water_03_btn" layoutX="172.0" layoutY="21.0" mnemonicParsing="false" text="Sparkl. Water (0.3 l)" />
+         <Button fx:id="sparkling_water_05_btn" layoutX="252.0" layoutY="21.0" mnemonicParsing="false" text="Sparkl. Water (0.5 l)" />
+         <Button fx:id="sprite_btn" layoutX="411.0" layoutY="26.0" mnemonicParsing="false" text="Sprite (0.5 l)" />
+         <Button fx:id="fanta_btn" layoutX="12.0" layoutY="105.0" mnemonicParsing="false" text="Fanta (0.5 l)" />
+         <Button fx:id="ice_tea_peach_btn" layoutX="92.0" layoutY="101.0" mnemonicParsing="false" text="Ice Tea Peach (0.5 l)" />
+         <Button fx:id="ice_tea_lemon_btn" layoutX="172.0" layoutY="101.0" mnemonicParsing="false" text="Ice Tea Lemon (0.5 l)" />
+         <Button fx:id="energy_drink_btn" layoutX="252.0" layoutY="101.0" mnemonicParsing="false" text="Energy Drink (0.33 l)" />
+         <Button fx:id="smoothie_btn" layoutX="332.0" layoutY="105.0" mnemonicParsing="false" text="Smoothie (0.3 l)" />
+         <Button fx:id="herbal_tea_btn" layoutX="411.0" layoutY="105.0" mnemonicParsing="false" text="Herbal Tea" />
+         <Button fx:id="hot_chocolate_btn" layoutX="12.0" layoutY="185.0" mnemonicParsing="false" text="Hot Choc." />
+         <Button fx:id="cappuccino_btn" layoutX="172.0" layoutY="185.0" mnemonicParsing="false" text="Cappuccino" />
         </AnchorPane>
     </VBox>
-    <VBox layoutX="510.0" prefHeight="760.0" prefWidth="480.0" AnchorPane.bottomAnchor="210.0"
-          AnchorPane.leftAnchor="510.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="30.0">
-        <AnchorPane prefHeight="560.0" prefWidth="480.0">
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" stroke="BLACK"
-                       strokeType="INSIDE" width="75.0" AnchorPane.leftAnchor="5.0"
-                       AnchorPane.topAnchor="30.0"/>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" stroke="BLACK"
-                       strokeType="INSIDE" width="75.0" AnchorPane.leftAnchor="85.0"
-                       AnchorPane.topAnchor="30.0"/>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" stroke="BLACK"
-                       strokeType="INSIDE" width="75.0" AnchorPane.leftAnchor="165.0"
-                       AnchorPane.topAnchor="30.0"/>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Food" wrappingWidth="104.33984375"
-                  AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0"/>
-            <Button fx:id="burger_btn" layoutX="17.0" layoutY="55.0" mnemonicParsing="false" text="burger"/>
-            <Button fx:id="fries_btn" layoutX="103.0" layoutY="55.0" mnemonicParsing="false" text="fries"/>
+    <VBox layoutX="510.0" prefHeight="760.0" prefWidth="480.0" styleClass="item_picker_food" AnchorPane.bottomAnchor="210.0" AnchorPane.leftAnchor="505.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+        <AnchorPane prefHeight="580.0" prefWidth="480.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-main-food" width="70.0" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="5.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-main-food" width="70.0" AnchorPane.leftAnchor="87.5" AnchorPane.topAnchor="5.0" />
+            <Button fx:id="burger_btn" layoutX="18.0" layoutY="25.0" mnemonicParsing="false" text="Burger" />
+            <Button fx:id="burger_witch_fries_btn" layoutX="92.0" layoutY="22.0" mnemonicParsing="false" text="Burger with Fries" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="159.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-main-food" width="70.0" AnchorPane.leftAnchor="167.5" AnchorPane.topAnchor="5.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="224.0" layoutY="-8.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-main-food" width="70.0" AnchorPane.leftAnchor="247.5" AnchorPane.topAnchor="5.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="336.0" layoutY="2.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-main-food" width="70.0" AnchorPane.leftAnchor="327.5" AnchorPane.topAnchor="5.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="400.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-snacks" width="70.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="5.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="407.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="85.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="328.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-snacks" width="70.0" AnchorPane.leftAnchor="327.5" AnchorPane.topAnchor="85.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="8.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-snacks" width="70.0" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="85.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="88.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-snacks" width="70.0" AnchorPane.leftAnchor="87.5" AnchorPane.topAnchor="85.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="168.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-snacks" width="70.0" AnchorPane.leftAnchor="167.5" AnchorPane.rightAnchor="247.0" AnchorPane.topAnchor="85.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="248.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-snacks" width="70.0" AnchorPane.leftAnchor="247.5" AnchorPane.rightAnchor="167.0" AnchorPane.topAnchor="85.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="407.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.rightAnchor="7.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="328.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="327.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="248.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="247.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="168.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="167.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="88.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="87.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="8.0" layoutY="235.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="245.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="407.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.rightAnchor="7.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="328.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="327.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="248.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="247.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="168.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="167.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="88.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="87.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="8.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="165.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="8.0" layoutY="315.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.topAnchor="325.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="88.0" layoutY="325.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="87.5" AnchorPane.topAnchor="325.0" />
+            <Button fx:id="chicken_wings_btn" layoutX="172.0" layoutY="21.0" mnemonicParsing="false" text="Chicken Wings (6pcs)" />
+            <Button fx:id="nachos_cheese_btn" layoutX="252.0" layoutY="25.0" mnemonicParsing="false" text="Nachos Chees" />
+            <Button fx:id="club_sandwich_btn" layoutX="12.0" layoutY="105.0" mnemonicParsing="false" text="Club Sandwich" />
+            <Button fx:id="ceaser_salad_btn" layoutX="332.0" layoutY="25.0" mnemonicParsing="false" text="Ceaser Salad" />
+            <Button fx:id="mini_pizzas_btn" layoutX="411.0" layoutY="21.0" mnemonicParsing="false" text="Mini Pizzas (2 pcs)" />
+            <Button fx:id="cheese_platter_btn" layoutX="92.0" layoutY="105.0" mnemonicParsing="false" text="Cheese Platter" />
+            <Button fx:id="peanuts_btn" layoutX="172.0" layoutY="105.0" mnemonicParsing="false" text="Peanuts (Bowl)" />
+            <Button fx:id="pretzel_sticks_btn" layoutX="252.0" layoutY="105.0" mnemonicParsing="false" text="Pretzel Sticks" />
+            <Button fx:id="chips_btn" layoutX="338.0" layoutY="105.0" mnemonicParsing="false" text="Chips" />
         </AnchorPane>
     </VBox>
     <VBox layoutX="14.0" layoutY="590.0" prefHeight="190.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0"
-          AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="600.0">
-        <AnchorPane prefHeight="200.0" prefWidth="200.0">
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Items selected:" AnchorPane.leftAnchor="0.0"
-                  AnchorPane.topAnchor="0.0"/>
-        </AnchorPane>
+          AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="630.0">
+        <ListView fx:id="selected_items_view" prefHeight="200.0" prefWidth="200.0"/>
     </VBox>
-    <VBox layoutX="700.0" layoutY="590.0" prefHeight="190.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0"
-          AnchorPane.leftAnchor="710.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="600.0">
-        <AnchorPane prefHeight="200.0" prefWidth="200.0">
-            <Button fx:id="place_order_btn" mnemonicParsing="false" text="place order"/>
-            <Button fx:id="abort_order_btn" mnemonicParsing="false" text="abort order"
-                    AnchorPane.topAnchor="30.0"/>
-            <Button fx:id="clear_all_items_btn" mnemonicParsing="false" text="clear all items"
-                    AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0"/>
-        </AnchorPane>
+    <VBox layoutX="700.0" layoutY="590.0" prefHeight="190.0" prefWidth="100.0" styleClass="quick_opt_container" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="760.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="630.0">
+        <Button fx:id="place_order_btn" mnemonicParsing="false" text="place order" />
+        <Button fx:id="abort_order_btn" mnemonicParsing="false" text="abort order" />
+        <Button fx:id="clear_all_items_btn" mnemonicParsing="false" text="clear all items" />
     </VBox>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Drinks" wrappingWidth="104.33984375" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Food" wrappingWidth="104.33984375" AnchorPane.leftAnchor="510.0" AnchorPane.topAnchor="25.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Items selected:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="600.0" />
 </AnchorPane>

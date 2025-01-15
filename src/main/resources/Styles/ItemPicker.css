@@ -1,0 +1,92 @@
+.item_picker {
+    -fx-background-color: #EFE9E1;
+}
+
+.item_picker Text {
+    -fx-font-size: 20;
+    -fx-fill: #111111;
+    -fx-font-family: "Lucida Console";
+    -fx-font-weight: bold;
+}
+.item_picker Button:hover {
+    -fx-cursor:hand;
+}
+
+
+.item_picker_drinks {
+    -fx-background-color: "white";
+}
+
+.item_picker_drinks Button {
+    -fx-background-color: #EFE9E1;
+    -fx-text-fill: #111111;
+    -fx-max-width: 62.5px;
+    -fx-min-height: 30px;
+    -fx-min-width: 50px;
+    -fx-wrap-text: true;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-font-size: 10;
+    -fx-font-family: "Lucida Console";
+}
+
+.item_picker_food {
+    -fx-background-color: "white";
+}
+
+.item_picker_food Button {
+    -fx-background-color: #EFE9E1;
+    -fx-text-fill: #111111;
+    -fx-max-width: 62.5px;
+    -fx-min-height: 30px;
+    -fx-min-width: 50px;
+    -fx-wrap-text: true;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-font-size: 10;
+    -fx-font-family: "Lucida Console";
+}
+
+.quick_opt_container {
+    -fx-spacing: 20;
+    -fx-alignment: top_center;
+    -fx-padding: 10 0 0 0;
+}
+
+.quick_opt_container Button {
+    -fx-background-color: "white";
+    -fx-text-fill: #111111;
+    -fx-alignment:center;
+    -fx-pref-width: 200;
+    -fx-pref-height: 30;
+    -fx-font-size: 18;
+    -fx-font-family: "Lucida Console";
+}
+
+.item_display_container {
+    -fx-background-color: "white";
+}
+
+.rectangle-non-alcoholic {
+    -fx-fill: #4FC3F7;
+}
+
+.rectangle-alcoholic {
+    -fx-fill: #388E3C;
+}
+
+.rectangle-cocktails {
+    -fx-fill: #BA68C8;
+}
+
+.rectangle-main-food {
+    -fx-fill: #FF7043;
+}
+
+.rectangle-snacks {
+    -fx-fill: #FDD835;
+}
+
+.item_picker Rectangle{
+    -fx-effect: null;
+}

@@ -46,7 +46,7 @@ public class DatabaseDriver {
         String insertOrderQuery = "INSERT INTO orders (table_id, order_date, waiter_id) VALUES (?, NOW(), ?)";
 
         // SQL query to insert an order item into the order_items table
-        String insertOrderItemQuery = "INSERT INTO order_items (order_id, menu_item_id, quantity, order_date) VALUES (?, ?, ?, ?)";
+        String insertOrderItemQuery = "INSERT INTO order_items (order_id, menu_item_id, quantity) VALUES (?, ?, ?)";
 
         try (Connection connection = DatabaseDriver.getConnection()) {
             // Step 1: Insert the order and get the generated order_id
@@ -76,7 +76,6 @@ public class DatabaseDriver {
                 orderItemStatement.setInt(1, orderId); // Set the order ID
                 orderItemStatement.setInt(2, itemId); // Set the menu item ID
                 orderItemStatement.setInt(3, itemQuantity); // Set the quantity
-                orderItemStatement.setTimestamp(4, java.sql.Timestamp.valueOf(java.time.LocalDateTime.now())); // Set the order date
                 orderItemStatement.executeUpdate(); // Execute the insert query for the order item
             }
 
