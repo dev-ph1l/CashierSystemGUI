@@ -11,6 +11,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class ItemPickerController implements Initializable {
@@ -57,6 +59,9 @@ public class ItemPickerController implements Initializable {
     public Button pretzel_sticks_btn;
     public Button chips_btn;
 
+    private final Map<Button, Integer> buttonIdMap = new HashMap<>();
+
+
     // control buttons
     public Button place_order_btn;
     public Button abort_order_btn;
@@ -75,8 +80,11 @@ public class ItemPickerController implements Initializable {
         itemNameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
         quantityColumn.setCellValueFactory(cellData -> cellData.getValue().quantityProperty().asObject());
 
+        // register Buttons
+        registerButtons();
 
-        addListeners();
+        // Set up event listeners for each button
+        buttonIdMap.forEach((button, id) -> button.setOnAction(event -> addItem(id)));
 
         place_order_btn.setOnAction(event -> {
             placeOrder();
@@ -93,52 +101,51 @@ public class ItemPickerController implements Initializable {
         });
     }
 
-    private void addListeners() {
-        water_03_btn.setOnAction(event -> addItem(1));
-        water_05_btn.setOnAction(event -> addItem(2));
-        sparkling_water_03_btn.setOnAction(event -> addItem(3));
-        sparkling_water_05_btn.setOnAction(event -> addItem(4));
-        cola_btn.setOnAction(event -> addItem(5));
-        sprite_btn.setOnAction(event -> addItem(6));
-        fanta_btn.setOnAction(event -> addItem(7));
-        ice_tea_peach_btn.setOnAction(event -> addItem(8));
-        ice_tea_lemon_btn.setOnAction(event -> addItem(9));
-        energy_drink_btn.setOnAction(event -> addItem(10));
-        smoothie_btn.setOnAction(event -> addItem(11));
-        herbal_tea_btn.setOnAction(event -> addItem(12));
-        hot_chocolate_btn.setOnAction(event -> addItem(13));
-        espresso_btn.setOnAction(event -> addItem(14));
-        cappuccino_btn.setOnAction(event -> addItem(15));
+    private void registerButtons() {
+        buttonIdMap.put(water_03_btn, 1);
+        buttonIdMap.put(water_05_btn, 2);
+        buttonIdMap.put(sparkling_water_03_btn, 3);
+        buttonIdMap.put(sparkling_water_05_btn, 4);
+        buttonIdMap.put(cola_btn, 5);
+        buttonIdMap.put(sprite_btn, 6);
+        buttonIdMap.put(fanta_btn, 7);
+        buttonIdMap.put(ice_tea_peach_btn, 8);
+        buttonIdMap.put(ice_tea_lemon_btn, 9);
+        buttonIdMap.put(energy_drink_btn, 10);
+        buttonIdMap.put(smoothie_btn, 11);
+        buttonIdMap.put(herbal_tea_btn, 12);
+        buttonIdMap.put(hot_chocolate_btn, 13);
+        buttonIdMap.put(espresso_btn, 14);
+        buttonIdMap.put(cappuccino_btn, 15);
 
-        draft_beer_btn.setOnAction(event -> addItem(16));
-        wheat_beer_btn.setOnAction(event -> addItem(17));
-        aperol_spritz_btn.setOnAction(event -> addItem(18));
-        tequila_shot_btn.setOnAction(event -> addItem(19));
-        whisky_sour_btn.setOnAction(event -> addItem(20));
-        red_wine_btn.setOnAction(event -> addItem(21));
-        white_wine_btn.setOnAction(event -> addItem(22));
-        mojito_btn.setOnAction(event -> addItem(23));
-        gin_tonic_btn.setOnAction(event -> addItem(24));
+        buttonIdMap.put(draft_beer_btn, 16);
+        buttonIdMap.put(wheat_beer_btn, 17);
+        buttonIdMap.put(aperol_spritz_btn, 18);
+        buttonIdMap.put(tequila_shot_btn, 19);
+        buttonIdMap.put(whisky_sour_btn, 20);
+        buttonIdMap.put(red_wine_btn, 21);
+        buttonIdMap.put(white_wine_btn, 22);
+        buttonIdMap.put(mojito_btn, 23);
+        buttonIdMap.put(gin_tonic_btn, 24);
 
-        cosmopolitan_btn.setOnAction(event -> addItem(25));
-        caipirinha_btn.setOnAction(event -> addItem(26));
-        long_island_iced_tea_btn.setOnAction(event -> addItem(27));
-        pina_colada_btn.setOnAction(event -> addItem(28));
+        buttonIdMap.put(cosmopolitan_btn, 25);
+        buttonIdMap.put(caipirinha_btn, 26);
+        buttonIdMap.put(long_island_iced_tea_btn, 27);
+        buttonIdMap.put(pina_colada_btn, 28);
 
-
-        burger_btn.setOnAction(event -> addItem(29));
-        burger_witch_fries_btn.setOnAction(event -> addItem(30));
-        chicken_wings_btn.setOnAction(event -> addItem(31));
-        nachos_cheese_btn.setOnAction(event -> addItem(32));
-        ceaser_salad_btn.setOnAction(event -> addItem(33));
-
-        mini_pizzas_btn.setOnAction(event -> addItem(34));
-        club_sandwich_btn.setOnAction(event -> addItem(35));
-        cheese_platter_btn.setOnAction(event -> addItem(36));
-        peanuts_btn.setOnAction(event -> addItem(37));
-        pretzel_sticks_btn.setOnAction(event -> addItem(38));
-        chips_btn.setOnAction(event -> addItem(39));
+        buttonIdMap.put(burger_btn, 29);
+        buttonIdMap.put(burger_witch_fries_btn, 30);
+        buttonIdMap.put(chicken_wings_btn, 31);
+        buttonIdMap.put(nachos_cheese_btn, 32);
+        buttonIdMap.put(ceaser_salad_btn, 33);
+        buttonIdMap.put(mini_pizzas_btn, 34);
+        buttonIdMap.put(club_sandwich_btn, 35);
+        buttonIdMap.put(cheese_platter_btn, 36);
+        buttonIdMap.put(peanuts_btn, 37);
+        buttonIdMap.put(pretzel_sticks_btn, 38);
+        buttonIdMap.put(chips_btn, 39);
     }
+
 
     private void addItem(int id) {
         Model.getInstance().getOrder().addItemId(id);
