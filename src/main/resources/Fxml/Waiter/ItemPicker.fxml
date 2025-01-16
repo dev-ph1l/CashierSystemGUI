@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
@@ -115,14 +116,18 @@
             <Button fx:id="chips_btn" layoutX="338.0" layoutY="105.0" mnemonicParsing="false" text="Chips" />
         </AnchorPane>
     </VBox>
-    <VBox layoutX="14.0" layoutY="590.0" prefHeight="190.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0"
-          AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="630.0">
-        <ListView fx:id="selected_items_view" prefHeight="200.0" prefWidth="200.0"/>
+    <VBox layoutX="14.0" layoutY="590.0" prefHeight="160.0" prefWidth="740.0" stylesheets="@../../Styles/ItemPicker.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="630.0">
+        <TableView fx:id="selected_items_view" prefHeight="160.0" prefWidth="740.0" styleClass="item_picker" stylesheets="@../../Styles/ItemPicker.css">
+            <columns>
+                <TableColumn fx:id="itemNameColumn" maxWidth="640.0" prefWidth="620.0" text="Item Name" />
+                <TableColumn fx:id="quantityColumn" maxWidth="120.0" prefWidth="118.0" text="Quantity" />
+            </columns>
+        </TableView>
     </VBox>
     <VBox layoutX="700.0" layoutY="590.0" prefHeight="190.0" prefWidth="100.0" styleClass="quick_opt_container" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="760.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="630.0">
         <Button fx:id="place_order_btn" mnemonicParsing="false" text="place order" />
-        <Button fx:id="abort_order_btn" mnemonicParsing="false" text="abort order" />
-        <Button fx:id="clear_all_items_btn" mnemonicParsing="false" text="clear all items" />
+        <Button fx:id="abort_order_btn" mnemonicParsing="false" styleClass="danger_button" text="abort order" />
+        <Button fx:id="clear_all_items_btn" mnemonicParsing="false" styleClass="danger_button" text="clear all items" />
     </VBox>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Drinks" wrappingWidth="104.33984375" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Food" wrappingWidth="104.33984375" AnchorPane.leftAnchor="510.0" AnchorPane.topAnchor="25.0" />

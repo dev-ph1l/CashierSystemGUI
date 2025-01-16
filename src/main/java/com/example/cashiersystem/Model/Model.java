@@ -15,6 +15,7 @@ public class Model {
     private final Waiter waiter;
     private boolean waiterLoginSuccessFlag;
     private final Order order;
+    private final OrderItem orderItem;
     private final Report report;
 
 
@@ -26,11 +27,11 @@ public class Model {
         this.viewFactory = new ViewFactory();
         this.databaseDriver = new DatabaseDriver();
 
-        // Client Data Section
-
+        // Waiter Data Section
         this.waiterLoginSuccessFlag = false;
         this.waiter = new Waiter("", "", -1);
         this.order = new Order(-1, -1, -1, null, null, null);
+        this.orderItem = new OrderItem("", -1);
         this.report = new Report(null,null, null, null , null, null, null);
 
         // Admin Data Section

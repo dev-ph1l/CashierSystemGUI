@@ -1,10 +1,14 @@
 package com.example.cashiersystem.Controllers.Waiter;
 
 import com.example.cashiersystem.Model.Model;
+import com.example.cashiersystem.Model.OrderItem;
 import com.example.cashiersystem.Views.WaiterMenuOptions;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -57,16 +61,34 @@ public class ItemPickerController implements Initializable {
     public Button place_order_btn;
     public Button abort_order_btn;
     public Button clear_all_items_btn;
-    public ListView<Integer> selected_items_view;
+    public TableView<OrderItem> selected_items_view;
+    public TableColumn<OrderItem, String> itemNameColumn;
+    public TableColumn<OrderItem, Integer> quantityColumn;
+
+    private final ObservableList<OrderItem> orderItems = FXCollections.observableArrayList();
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Connect columns with their properties
+        itemNameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+        quantityColumn.setCellValueFactory(cellData -> cellData.getValue().quantityProperty().asObject());
+
+
         addListeners();
 
-        place_order_btn.setOnAction(event -> placeOrder());
-        clear_all_items_btn.setOnAction(event -> Model.getInstance().getOrder().clearItems());
+        place_order_btn.setOnAction(event -> {
+            placeOrder();
+            clearSelected();
+        });
+        clear_all_items_btn.setOnAction(event -> {
+            Model.getInstance().getOrder().clearItems();
+            clearSelected();
+        });
         abort_order_btn.setOnAction(event -> {
             Model.getInstance().getOrder().clearItems();
+            clearSelected();
             Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(WaiterMenuOptions.ORDERS);
         });
     }
@@ -120,15 +142,34 @@ public class ItemPickerController implements Initializable {
 
     private void addItem(int id) {
         Model.getInstance().getOrder().addItemId(id);
-        selected_items_view.setItems(Model.getInstance().getOrder().itemIdsProperty());
+        displaySelected(id);
     }
 
-    private void displaySelected() {
+    private void displaySelected(int id) {
+        String itemName = Model.getInstance().getDatabaseDriver().getItemName(id);
+        int quantity = Model.getInstance().getOrder().getQuantityForItemId(id);
 
+        // check if item already is in the list
+        for (OrderItem item : orderItems) {
+            if (item.nameProperty().get().equals(itemName)) {
+                // increase quantity
+                item.quantityProperty().set(quantity);
+                selected_items_view.refresh();
+                return;
+            }
+        }
+
+        // add item if it doesn't exist
+        orderItems.add(new OrderItem(itemName, quantity));
+        selected_items_view.setItems(orderItems);
+    }
+
+    private void clearSelected() {
+        selected_items_view.setItems(null);
+        orderItems.clear();
     }
 
     private void placeOrder() {
         Model.getInstance().getDatabaseDriver().createOrder();
     }
-
 }

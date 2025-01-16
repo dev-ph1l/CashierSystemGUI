@@ -63,4 +63,9 @@ public class Order {
     public Map<Integer, Integer> getItemQuantities() {
         return itemCountMap;
     }
+
+    public int getQuantityForItemId(int itemId) {
+        // Abrufen der Artikelmenge aus der Map
+        return getItemQuantities().getOrDefault(itemId, 0);
+    }
 }
