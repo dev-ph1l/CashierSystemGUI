@@ -25,7 +25,6 @@
 /* Account Selector ChoiceBox Styles*/
 .account_selector {
     -fx-background-color: "white";
-
 }
 .account_selector .arrow {
     -fx-background-color: #111111;
