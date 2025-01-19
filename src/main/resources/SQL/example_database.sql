@@ -1,14 +1,16 @@
+-- Erstellen der Datenbank
 CREATE DATABASE datenbank_boniersystem CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
+-- Verwenden der Datenbank
 USE datenbank_boniersystem;
 
--- tables table
+-- Tabelle für Tische
 CREATE TABLE tables (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL
 );
 
--- menu_items table
+-- Tabelle für Menüartikel
 CREATE TABLE menu_items (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -17,7 +19,7 @@ CREATE TABLE menu_items (
     purchase_price DECIMAL(10, 2) NOT NULL
 );
 
--- orders table
+-- Tabelle für Bestellungen
 CREATE TABLE orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
     table_id INT NOT NULL,
@@ -25,7 +27,7 @@ CREATE TABLE orders (
     FOREIGN KEY (table_id) REFERENCES tables(id)
 );
 
--- order_items table
+-- Tabelle für Artikel in einer Bestellung
 CREATE TABLE order_items (
     id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT NOT NULL,
@@ -35,12 +37,12 @@ CREATE TABLE order_items (
     FOREIGN KEY (menu_item_id) REFERENCES menu_items(id)
 );
 
--- tables
+-- Beispiel-Daten für Tische
 INSERT INTO tables (name) VALUES ('Table 1'), ('Table 2'), ('Table 3'),('Table 4'), ('Table 5'), ('Table 6'),('Table 7'), ('Table 8'), ('Table 9'),('Table 10'), ('Table 11');
 
--- menu-items
+-- Beispiel-Daten für Menüartikel
 -- Drinks
-INSERT INTO menu_items (name, category, price, purchase_price) VALUES
+INSERT INTO menu_items (name, category, price, purchase_price) VALUES 
 ('Water 0.3L', 'non-alcoholic drink', 2.00, 1.50),
 ('Water 0.5L', 'non-alcoholic drink', 2.50, 1.80),
 ('Sparkling Water 0.3L', 'non-alcoholic drink', 2.50, 1.80),
@@ -71,7 +73,7 @@ INSERT INTO menu_items (name, category, price, purchase_price) VALUES
 ('Pina Colada', 'Getränk', 6.50, 5.00);
 
 -- Food
-INSERT INTO menu_items (name, category, price, purchase_price) VALUES
+INSERT INTO menu_items (name, category, price, purchase_price) VALUES 
 ('Burger', 'main food', 8.00, 5.00),
 ('Burger with Fries', 'main food', 10.00, 6.50),
 ('Chicken Wings', 'main food', 7.00, 4.50),
@@ -97,22 +99,26 @@ CREATE TABLE admins (
     password VARCHAR(100) NOT NULL
 );
 
+CREATE TABLE account (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL,
+    account_type VARCHAR(50) NOT NULL
+);
+
 ALTER TABLE orders ADD COLUMN waiter_id INT NOT NULL;
 
 -- Set up a foreign key relationship
-ALTER TABLE orders ADD CONSTRAINT fk_waiter FOREIGN KEY (waiter_id) REFERENCES waiters(id);
+ALTER TABLE orders ADD CONSTRAINT fk_waiter FOREIGN KEY (waiter_id) REFERENCES account(id);
 
-INSERT INTO waiters (username, password) VALUES
-('Alice', 'password123'),
+INSERT INTO waiters (username, password) VALUES 
+('Alice', 'password123'), 
 ('Bob', 'securepass');
 
 INSERT INTO admins (username, password) VALUES
 ('root', 'root');
 
-
-
-select * from menu_items;
-select * from order_items;
-select * from orders;
-
-
+INSERT INTO account (username, password, account_type) VALUES
+('Alice', 'password123', 'WAITER'), 
+('Bob', 'securepass', 'WAITER'),
+('root', 'root', 'ADMIN');
