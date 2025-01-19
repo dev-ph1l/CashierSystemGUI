@@ -71,7 +71,7 @@ public class ReportsController implements Initializable {
         confirm_date_btn_m.setOnAction(event -> onMonthlyReport());
         reset_btn.setOnAction(event -> resetReports());
 
-        // Setze RowFactory für dynamische Zeilenhöhe
+        // Set RowFactory for dynamic rowheight
         reportDetailsView.setRowFactory(tv -> {
             TableRow<ReportDetail> row = new TableRow<>();
 
