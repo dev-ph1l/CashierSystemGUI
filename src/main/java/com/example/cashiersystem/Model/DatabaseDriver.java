@@ -6,9 +6,9 @@ import java.sql.*;
 import java.util.*;
 
 public class DatabaseDriver {
-    private static final String URL = "jdbc:mysql://127.0.0.1:3360/datenbank_boniersystem";
-    private static final String USER = "root";
-    private static final String PASSWORD = "Jsb9yfgMKZ58h5tj";
+    private static final String URL = "YourURL";
+    private static final String USER = "YoutUser";
+    private static final String PASSWORD = "YourPassword";
 
     /**
      *Establishes a connection to the database using the provided credentials.
