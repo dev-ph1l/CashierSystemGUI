@@ -97,7 +97,7 @@ public class ReportsController implements Initializable {
             return row;
         });
 
-        // Spaltenverbindungen
+        // connections
         orderDateColumn.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
         waiterColumn.setCellValueFactory(cellData -> cellData.getValue().waiterNameProperty());
         itemsColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFormattedItems()));
