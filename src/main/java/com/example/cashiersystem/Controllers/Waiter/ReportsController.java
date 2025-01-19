@@ -141,6 +141,7 @@ public class ReportsController implements Initializable {
 
     public void onMonthlyReport() {
         if (report_month_dropdown.getValue() != null && report_year_dropdown.getValue() != null) {
+            error_lbl.setText("");
             Months selectedMonth = report_month_dropdown.getValue();
             int selectedYear = report_year_dropdown.getValue();
 
