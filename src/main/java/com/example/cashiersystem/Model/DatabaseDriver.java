@@ -26,23 +26,6 @@ public class DatabaseDriver {
     *  Waiter Section
     * */
 
-    // retrieves the waiter password and username for login
-    public ResultSet getWaiterData(String username, String password) {
-        String query = "SELECT * FROM waiters WHERE username = ? AND password = ?";
-        try {
-            Connection connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
-
-            return preparedStatement.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
     // creates an order, to which the items ordered are connected (via the order_id)
     public void createOrder() {
         String insertOrderQuery = "INSERT INTO orders (table_id, order_date, waiter_id) VALUES (?, NOW(), ?)";
@@ -64,7 +47,7 @@ public class DatabaseDriver {
 
             PreparedStatement orderItemStatement = connection.prepareStatement(insertOrderItemQuery);
 
-            Map<Integer, Integer> itemMap = Model.getInstance().getOrder().getItemQuantities(); // Get the item quantities map
+            Map<Integer, Integer> itemMap = Model.getInstance().getOrder().getItemMap(); // Get the item quantities map
             for (Map.Entry<Integer, Integer> entry : itemMap.entrySet()) {
                 int itemId = entry.getKey();
                 int itemQuantity = entry.getValue();
@@ -152,15 +135,20 @@ public class DatabaseDriver {
     *  Admin Section
     * */
 
-    // retrieves the admin password and username for login
-    public ResultSet getAdminData(String username, String password) {
-        String query = "SELECT * FROM admins WHERE username = ? AND password = ?";
+
+    /*
+    * Utility Methods (used by both waiter and admin)
+    * */
+
+    public ResultSet getLoginData(String username, String password, String accountType) {
+        String query = "SELECT * FROM account WHERE username = ? AND password = ? AND account_type = ?";
         try {
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
+            preparedStatement.setString(3, accountType);
 
             return preparedStatement.executeQuery();
         } catch (SQLException e) {
@@ -168,9 +156,4 @@ public class DatabaseDriver {
             return null;
         }
     }
-
-
-    /*
-    * Utility Methods (used by both waiter and admin)
-    * */
 }

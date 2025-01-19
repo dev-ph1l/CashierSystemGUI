@@ -42,6 +42,8 @@ public class WaiterMenuController implements Initializable {
     private void onLogout() {
         Stage stage = (Stage) logout_btn.getScene().getWindow();
         stage.close();
+        Model.getInstance().setWaiterLoginSuccessFlag(false);
+        Model.getInstance().setAdminLoginSuccessFlag(false);
         Model.getInstance().getViewFactory().showLoginWindow();
     }
 }

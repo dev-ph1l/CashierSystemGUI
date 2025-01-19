@@ -12,22 +12,21 @@ public class Order {
     private final IntegerProperty waiterId;
     private final IntegerProperty tableId;
     private final ObjectProperty<LocalDate> date;
-    private final ListProperty<Integer> itemIds;
-    private final Map<Integer, Integer> itemCountMap;
+    private final Map<Integer, Integer> itemMap;
 
-    Order(int orderId, int waiterId, int tableId, LocalDate date, ListProperty<Integer> ItemIds,Map<Integer, Integer> itemCountMap) {
+    Order(int orderId, int waiterId, int tableId, LocalDate date, ListProperty<Integer> ItemIds,Map<Integer, Integer> itemMap) {
         this.orderId = new SimpleIntegerProperty(this, "OrderId", orderId);
         this.waiterId = new SimpleIntegerProperty(this, "WaiterId", waiterId);
         this.tableId = new SimpleIntegerProperty(this, "TableId", tableId);
         this.date = new SimpleObjectProperty<>(this, "Date", date);
-        this.itemIds = new SimpleListProperty<>(this, "ItemIds", FXCollections.observableArrayList());
-        this.itemCountMap = new HashMap<>();
+        this.itemMap = new HashMap<>();
     }
 
     // getters
     public IntegerProperty orderIdProperty() {
         return orderId;
     }
+
     public IntegerProperty waiterIdProperty() {
         return waiterId;
     }
@@ -40,32 +39,27 @@ public class Order {
         return date;
     }
 
-    public ListProperty<Integer> itemIdsProperty() {
-        return itemIds;
-    }
 
     // order items methods
     public void addItemId(int itemId) {
-        if (itemCountMap.containsKey(itemId)) {
-            int currentCount = itemCountMap.get(itemId);
-            itemCountMap.put(itemId, currentCount + 1);
+        if (itemMap.containsKey(itemId)) {
+            int currentCount = itemMap.get(itemId);
+            itemMap.put(itemId, currentCount + 1);
         } else {
-            itemCountMap.put(itemId, 1);
-            itemIds.add(itemId);
+            itemMap.put(itemId, 1);
         }
     }
 
     public void clearItems() {
-        this.itemIds.clear();
-        this.itemCountMap.clear();  // Löscht auch das Mengenmap
+        this.itemMap.clear();
     }
 
-    public Map<Integer, Integer> getItemQuantities() {
-        return itemCountMap;
+    public Map<Integer, Integer> getItemMap() {
+        return itemMap;
     }
 
     public int getQuantityForItemId(int itemId) {
         // Abrufen der Artikelmenge aus der Map
-        return getItemQuantities().getOrDefault(itemId, 0);
+        return getItemMap().getOrDefault(itemId, 0);
     }
 }

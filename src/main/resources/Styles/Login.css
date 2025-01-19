@@ -37,6 +37,7 @@
 
 /*Login Form Styles*/
 .login_form_container {
+    -fx-font-family: "Lucida Console";
     -fx-spacing: 15;
     -fx-alignment: top_left;
 }

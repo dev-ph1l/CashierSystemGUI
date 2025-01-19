@@ -84,7 +84,10 @@ public class ItemPickerController implements Initializable {
         registerButtons();
 
         // Set up event listeners for each button
-        buttonIdMap.forEach((button, id) -> button.setOnAction(event -> addItem(id)));
+        buttonIdMap.forEach((button, id) -> button.setOnAction(event -> {
+            addItem(id);
+            displaySelected(id);
+        }));
 
         place_order_btn.setOnAction(event -> {
             placeOrder();
@@ -149,7 +152,6 @@ public class ItemPickerController implements Initializable {
 
     private void addItem(int id) {
         Model.getInstance().getOrder().addItemId(id);
-        displaySelected(id);
     }
 
     private void displaySelected(int id) {

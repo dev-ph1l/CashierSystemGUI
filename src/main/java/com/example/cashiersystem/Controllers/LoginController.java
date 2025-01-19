@@ -40,31 +40,31 @@ public class LoginController implements Initializable {
         Stage stage = (Stage) error_lbl.getScene().getWindow();         //workaround
         // WAITER LOGIN
         if (Model.getInstance().getLoginAccountType() == AccountType.WAITER) {
-            // Evaluate Waiter Login Credentials
-            Model.getInstance().evaluateWaiterCred(name_field.getText(), password_field.getText()); // maybe check if it is empty
+            Model.getInstance().evaluateLoginCred(name_field.getText(), password_field.getText(), AccountType.WAITER); // maybe check if it is empty
             if (Model.getInstance().getWaiterLoginSuccessFlag()) {
                 Model.getInstance().getViewFactory().showWaiterWindow();
-                // Close the login stage
                 Model.getInstance().getViewFactory().closeStage(stage);
                 error_lbl.setText("");
             } else {
-                name_field.setText("");
-                password_field.setText("");
-                error_lbl.setText("Error, try again!");
+                resetLoginStage();
             }
         // ADMIN LOGIN
         } else if (Model.getInstance().getLoginAccountType() == AccountType.ADMIN){
-            Model.getInstance().evaluateAdminCred(name_field.getText(), password_field.getText());
+            Model.getInstance().evaluateLoginCred(name_field.getText(), password_field.getText(), AccountType.ADMIN);
             if(Model.getInstance().getAdminLoginSuccessFlag()) {
                 Model.getInstance().getViewFactory().showAdminWindow();
                 Model.getInstance().getViewFactory().closeStage(stage);
                 error_lbl.setText("");
             } else {
-                name_field.setText("");
-                password_field.setText("");
-                error_lbl.setText("Error, try again!");
+                resetLoginStage();
             }
         }
 
+    }
+
+    private void resetLoginStage() {
+        name_field.setText("");
+        password_field.setText("");
+        error_lbl.setText("Error, try again!");
     }
 }
