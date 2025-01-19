@@ -89,7 +89,7 @@ public class ReportsController implements Initializable {
                     }
                     row.setPrefHeight(maxHeight); // Set the row's preferred height
 
-                    double minHeight = 3 * (new Font("Lucida Console", 14).getSize()); // Mindesthöhe für 2 Zeilen
+                    double minHeight = 3 * (new Font("Lucida Console", 14).getSize());
                     row.setPrefHeight(Math.max(maxHeight, minHeight));
                 }
             });
