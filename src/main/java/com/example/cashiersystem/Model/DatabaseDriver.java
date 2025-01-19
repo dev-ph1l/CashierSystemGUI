@@ -250,17 +250,6 @@ public class DatabaseDriver {
         return new ArrayList<>(reportMap.values());
     }
 
-
-
-
-
-
-
-
-
-
-
-
     // returns item name corresponding to its id, used to display items added to an order in ItemPicker
     public String getItemName(int ItemId) {
 
