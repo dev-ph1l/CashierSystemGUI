@@ -1,8 +1,8 @@
 -- Create the database for the system
-CREATE DATABASE datenbank_boniersystem CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE database_cashier_system CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- Use the created database
-USE datenbank_boniersystem;
+USE database_cashier_system;
 
 -- Table for storing tables in the bar/restaurant
 CREATE TABLE tables (
