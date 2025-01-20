@@ -71,7 +71,7 @@ public class ReportsController implements Initializable {
         confirm_date_btn_m.setOnAction(event -> onMonthlyReport());
         reset_btn.setOnAction(event -> resetReports());
 
-        // Setze RowFactory für dynamische Zeilenhöhe
+        // Set RowFactory for dynamic rowheight
         reportDetailsView.setRowFactory(tv -> {
             TableRow<ReportDetail> row = new TableRow<>();
 
@@ -89,7 +89,7 @@ public class ReportsController implements Initializable {
                     }
                     row.setPrefHeight(maxHeight); // Set the row's preferred height
 
-                    double minHeight = 3 * (new Font("Lucida Console", 14).getSize()); // Mindesthöhe für 2 Zeilen
+                    double minHeight = 3 * (new Font("Lucida Console", 14).getSize());
                     row.setPrefHeight(Math.max(maxHeight, minHeight));
                 }
             });
@@ -97,7 +97,7 @@ public class ReportsController implements Initializable {
             return row;
         });
 
-        // Spaltenverbindungen
+        // connections
         orderDateColumn.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
         waiterColumn.setCellValueFactory(cellData -> cellData.getValue().waiterNameProperty());
         itemsColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFormattedItems()));
