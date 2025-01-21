@@ -18,10 +18,10 @@ public class ViewFactory {
     // Client Views
     private final ObjectProperty<WaiterMenuOptions> clientSelectedMenuItem;
     private AnchorPane dashboardView;
-    public AnchorPane ordersView;
-    public AnchorPane reportsView;
-    public AnchorPane itemPickerView;
-    public AnchorPane reservationView;
+    private AnchorPane ordersView;
+    private AnchorPane reportsView;
+    private AnchorPane itemPickerView;
+    private AnchorPane reservationView;
 
     // Admin Views
     private final ObjectProperty<AdminMenuOptions> adminSelectedMenuItem;

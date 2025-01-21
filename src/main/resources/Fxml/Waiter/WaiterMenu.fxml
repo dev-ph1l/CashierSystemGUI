@@ -7,27 +7,22 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="200.0" styleClass="menu_container" stylesheets="@../../Styles/WaiterMenu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cashiersystem.Controllers.Waiter.WaiterMenuController">
     <AnchorPane prefHeight="100.0" prefWidth="200.0" styleClass="title_container">
-      <VBox prefHeight="100.0" prefWidth="200.0" styleClass="title_container">
-         <children>
-              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cashier System" textAlignment="CENTER" wrappingWidth="200.0" />
-         </children>
-      </VBox>
+        <VBox prefHeight="100.0" prefWidth="200.0" styleClass="title_container">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cashier System" textAlignment="CENTER"
+                  wrappingWidth="200.0"/>
+        </VBox>
     </AnchorPane>
     <AnchorPane prefHeight="500.0" prefWidth="200.0">
-      <VBox prefHeight="500.0" prefWidth="200.0" styleClass="control_btn_container">
-         <children>
-              <Button fx:id="dashboard_btn" mnemonicParsing="false" prefHeight="32.0" prefWidth="200.0" text="Dashboard" />
-              <Button fx:id="orders_btn" mnemonicParsing="false" text="Oders" />
-              <Button fx:id="reports_btn" mnemonicParsing="false" text="Reports" />
-            <Button fx:id="reservation_btn" mnemonicParsing="false" text="Reservation" />
-         </children>
-      </VBox>
+        <VBox prefHeight="500.0" prefWidth="200.0" styleClass="control_btn_container">
+            <Button fx:id="dashboard_btn" mnemonicParsing="false" prefHeight="32.0" prefWidth="200.0" text="Dashboard"/>
+            <Button fx:id="orders_btn" mnemonicParsing="false" text="Order"/>
+            <Button fx:id="reports_btn" mnemonicParsing="false" text="Report"/>
+            <Button fx:id="reservation_btn" mnemonicParsing="false" text="Reservation"/>
+        </VBox>
     </AnchorPane>
     <AnchorPane prefHeight="200.0" prefWidth="200.0">
-      <VBox prefHeight="200.0" prefWidth="200.0" styleClass="logout_btn_container">
-         <children>
-              <Button fx:id="logout_btn" mnemonicParsing="false" text="Logout" />
-         </children>
-      </VBox>
+        <VBox prefHeight="200.0" prefWidth="200.0" styleClass="logout_btn_container">
+            <Button fx:id="logout_btn" mnemonicParsing="false" text="Logout"/>
+        </VBox>
     </AnchorPane>
 </VBox>

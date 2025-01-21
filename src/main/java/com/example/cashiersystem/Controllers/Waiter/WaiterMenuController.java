@@ -42,9 +42,9 @@ public class WaiterMenuController implements Initializable {
     private void onReports() {
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(WaiterMenuOptions.REPORTS);
     }
+
     private void onReservation() {
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(WaiterMenuOptions.RESERVATION);
-
     }
 
     private void onLogout() {
@@ -54,4 +54,5 @@ public class WaiterMenuController implements Initializable {
         Model.getInstance().setAdminLoginSuccessFlag(false);
         Model.getInstance().getViewFactory().showLoginWindow();
     }
+
 }
