@@ -1,7 +1,7 @@
 package com.example.cashiersystem.Controllers.Waiter;
 
 import com.example.cashiersystem.Model.Model;
-import com.example.cashiersystem.Views.AccountType;
+import com.example.cashiersystem.Model.Reservation;
 import com.example.cashiersystem.Views.WaiterEnums.ReservationStatus;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -40,17 +40,113 @@ public class ReservationController implements Initializable {
     public Label error_lbl;
 
     public Label reservation_detail_lbl;
-    public TableView reservation_details_table;
+    public TableView<Reservation> reservation_details_table;
+    public TableColumn<Reservation, LocalDateTime> time_column;
+    public TableColumn<Reservation, String> name_column;
+    public TableColumn<Reservation, String> table_column;
+    public TableColumn<Reservation, Integer> count_column;
+    public TableColumn<Reservation, String> notes_column;
+    public TableColumn<Reservation, String> status_column;
+    public TableColumn<Reservation, Void> complete_btn_column;
+    public TableColumn<Reservation, Void> cancel_btn_column;
+
 
     ObservableList<String> times = FXCollections.observableArrayList("17:00", "17:30", "18:00");
     ObservableList<Integer> guestCount = FXCollections.observableArrayList(1, 2, 3, 4);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        updateReservationDetailsLabel();
+
         time_selector.setItems(times);
         guest_amm_selector.setItems(guestCount);
 
         addListeners();
+
+        table_column.setCellValueFactory(cellData -> cellData.getValue().tableNameProperty());
+        name_column.setCellValueFactory(cellData -> cellData.getValue().reservedByProperty());
+        time_column.setCellValueFactory(cellData -> cellData.getValue().reservationTimeProperty());
+        count_column.setCellValueFactory(cellData -> cellData.getValue().guestCountProperty().asObject());
+        notes_column.setCellValueFactory(cellData -> cellData.getValue().notesProperty());
+        status_column.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+
+        // formatting for time coulmn
+        time_column.setCellFactory(column -> new TableCell<Reservation, LocalDateTime>() {
+            private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+
+            @Override
+            protected void updateItem(LocalDateTime item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item.toLocalTime().format(timeFormatter));
+                }
+            }
+        });
+
+        // comparator for time column
+        time_column.setComparator((time1, time2) -> {
+            if (time1 == null || time2 == null) {
+                return time1 == null ? 1 : -1;
+            }
+            return time1.compareTo(time2);
+        });
+
+        reservation_details_table.getSortOrder().add(time_column);
+        time_column.setSortType(TableColumn.SortType.ASCENDING);
+
+        // create column for Button
+        complete_btn_column.setCellFactory(param -> new TableCell<Reservation, Void>() {
+            private final Button completedButton = new Button("✔");
+
+            {
+                completedButton.setStyle("-fx-text-fill: green;");
+                completedButton.setOnAction(event -> {
+                    Reservation reservation = getTableView().getItems().get(getIndex());
+                    reservation.setStatus(ReservationStatus.COMPLETED);
+                    Model.getInstance().getDatabaseDriver().updateReservationStatus(reservation);
+                    loadReservationsForDate();
+                });
+            }
+
+            @Override
+            public void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(completedButton);
+                }
+            }
+        });
+
+        cancel_btn_column.setCellFactory(param -> new TableCell<Reservation, Void>() {
+            private final Button cancelButton = new Button("✘");
+
+            {
+                cancelButton.setStyle("-fx-text-fill: red;");
+                cancelButton.setOnAction(event -> {
+                    Reservation reservation = getTableView().getItems().get(getIndex());
+                    reservation.setStatus(ReservationStatus.CANCELLED);
+                    Model.getInstance().getDatabaseDriver().updateReservationStatus(reservation);
+                    loadReservationsForDate();
+                });
+            }
+
+            @Override
+            public void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(cancelButton);
+                }
+            }
+        });
+
+        // show reservations
+        loadReservationsForDate();
     }
 
     private void addListeners() {
@@ -71,14 +167,55 @@ public class ReservationController implements Initializable {
     }
 
     private void onTableClicked(String table) {
+        selected_table_lbl.setStyle("");
         selected_table_lbl.setText("Table Selected: " + table);
         Model.getInstance().getReservation().tableNameProperty().set(table);
     }
 
     private void createReservation() {
-        Model.getInstance().getReservation().reservedByProperty().set(guest_name_field.getText());
+        // check if any field isn't filled
+        boolean isValid = true;
 
-        //
+        if (date_selector.getValue() == null) {
+            date_selector.setStyle("-fx-border-color: red;");
+            isValid = false;
+        } else {
+            date_selector.setStyle("");
+        }
+
+        if (time_selector.getValue() == null || time_selector.getValue().isEmpty()) {
+            time_selector.setStyle("-fx-border-color: red;");
+            isValid = false;
+        } else {
+            time_selector.setStyle("");
+        }
+
+        if (guest_name_field.getText() == null || guest_name_field.getText().trim().isEmpty()) {
+            guest_name_field.setStyle("-fx-border-color: red;");
+            isValid = false;
+        } else {
+            guest_name_field.setStyle("");
+        }
+
+        if (guest_amm_selector.getValue() == null) {
+            guest_amm_selector.setStyle("-fx-border-color: red;");
+            isValid = false;
+        } else {
+            guest_amm_selector.setStyle("");
+        }
+        if (Model.getInstance().getReservation().tableNameProperty().get() == null ||
+                Model.getInstance().getReservation().tableNameProperty().get().isEmpty()) {
+            selected_table_lbl.setStyle("-fx-text-fill: red;");  // Visuelle Hervorhebung
+            isValid = false;
+        } else {
+            selected_table_lbl.setStyle("");  // Zurücksetzen
+        }
+
+        if (!isValid) {
+            return;
+        }
+
+        Model.getInstance().getReservation().reservedByProperty().set(guest_name_field.getText());
         LocalDate date = date_selector.getValue();
         String timeString = time_selector.getValue();
         LocalTime time = LocalTime.parse(timeString, DateTimeFormatter.ofPattern("HH:mm"));
@@ -90,9 +227,44 @@ public class ReservationController implements Initializable {
         Model.getInstance().getReservation().setStatus(ReservationStatus.CONFIRMED);
 
         Model.getInstance().getDatabaseDriver().createReservation();
+        loadReservationsForDate();
+
+        // reset everything for next reservation
+        resetScene();
+    }
+
+    public void loadReservationsForDate() {
+        ObservableList<Reservation> reservations = Model.getInstance().getDatabaseDriver().loadTodayReservations();
+        reservation_details_table.setItems(reservations);
+
+        // trigger sorting explicitly
+        time_column.setSortType(TableColumn.SortType.ASCENDING);
+        reservation_details_table.getSortOrder().add(time_column);
+        reservation_details_table.sort();
+    }
+
+    public void updateReservationDetailsLabel() {
+        LocalDate today = LocalDate.now();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        String formattedDate = today.format(formatter);
+
+        reservation_detail_lbl.setText("Reservation Details for " + formattedDate);
     }
 
     private void resetScene() {
+        error_lbl.setText("");
         selected_table_lbl.setText("No Table Selected");
+        date_selector.setValue(null);
+        time_selector.setValue(null);
+        guest_name_field.setText("");
+        guest_amm_selector.setValue(null);
+        notes_text_area.setText("");
+
+        date_selector.setStyle("");
+        time_selector.setStyle("");
+        guest_name_field.setStyle("");
+        guest_amm_selector.setStyle("");
+        selected_table_lbl.setStyle("");
     }
 }

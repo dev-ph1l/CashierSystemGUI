@@ -32,7 +32,7 @@ public class Model {
         this.waiter = new Waiter("", "", -1);
         this.order = new Order(-1, -1, -1, null, null, null);
         this.report = new Report(null,null, null, null , null, null, null);
-        this.reservation = new Reservation("", "", null, 0, "", null);
+        this.reservation = new Reservation(0, "", "", null, 0, "", null);
 
         // Admin Data Section
         this.adminLoginSuccessFlag = false;
