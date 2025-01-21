@@ -1,4 +1,4 @@
-package com.example.cashiersystem.Views;
+package com.example.cashiersystem.Views.WaiterEnums;
 
 public enum Months {
     JANUARY,

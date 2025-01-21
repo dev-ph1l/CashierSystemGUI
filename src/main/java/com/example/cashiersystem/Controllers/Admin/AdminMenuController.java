@@ -1,7 +1,7 @@
 package com.example.cashiersystem.Controllers.Admin;
 
 import com.example.cashiersystem.Model.Model;
-import com.example.cashiersystem.Views.AdminMenuOptions;
+import com.example.cashiersystem.Views.AdminEnums.AdminMenuOptions;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;

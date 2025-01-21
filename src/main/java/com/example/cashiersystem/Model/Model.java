@@ -16,6 +16,7 @@ public class Model {
     private boolean waiterLoginSuccessFlag;
     private final Order order;
     private final Report report;
+    private final Reservation reservation;
 
 
     // Admin Data Section
@@ -31,6 +32,7 @@ public class Model {
         this.waiter = new Waiter("", "", -1);
         this.order = new Order(-1, -1, -1, null, null, null);
         this.report = new Report(null,null, null, null , null, null, null);
+        this.reservation = new Reservation("", "", null, 0, "", null);
 
         // Admin Data Section
         this.adminLoginSuccessFlag = false;
@@ -69,8 +71,12 @@ public class Model {
         return order;
     }
 
-    public Report getReport(){
+    public Report getReport() {
         return report;
+    }
+
+    public Reservation getReservation() {
+        return reservation;
     }
         /*
      * Admin Method Section

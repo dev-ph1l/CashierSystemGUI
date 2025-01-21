@@ -1,7 +1,7 @@
 package com.example.cashiersystem.Controllers.Waiter;
 
 import com.example.cashiersystem.Model.Model;
-import com.example.cashiersystem.Views.WaiterMenuOptions;
+import com.example.cashiersystem.Views.WaiterEnums.WaiterMenuOptions;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 

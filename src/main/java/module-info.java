@@ -14,4 +14,6 @@ module com.example.cashiersystem {
     exports com.example.cashiersystem.Views to javafx.fxml;
     exports com.example.cashiersystem.Model to javafx.fxml;
     opens com.example.cashiersystem.Controllers to javafx.fxml;
+    exports com.example.cashiersystem.Views.AdminEnums to javafx.fxml;
+    exports com.example.cashiersystem.Views.WaiterEnums to javafx.fxml;
 }

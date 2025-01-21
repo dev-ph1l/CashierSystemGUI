@@ -1,7 +1,6 @@
 package com.example.cashiersystem.Model;
 
 import javafx.beans.property.*;
-import javafx.collections.FXCollections;
 
 import java.time.LocalDate;
 import java.util.HashMap;
