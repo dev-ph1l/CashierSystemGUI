@@ -12,10 +12,10 @@
     <VBox prefHeight="700.0" prefWidth="900.0" AnchorPane.bottomAnchor="350.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="410.0" AnchorPane.topAnchor="60.0">
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="You are working since XXX hours" />
     </VBox>
-   <VBox layoutX="510.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" styleClass="clock_container" AnchorPane.bottomAnchor="650.0" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-      <children>
-           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current time:" />
-         <Label fx:id="clock_lbl" styleClass="clock_lbl" />
-      </children>
-   </VBox>
+    <VBox layoutX="510.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" styleClass="clock_container"
+          AnchorPane.bottomAnchor="650.0" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="10.0"
+          AnchorPane.topAnchor="10.0">
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current time:"/>
+        <Label fx:id="clock_lbl" styleClass="clock_lbl"/>
+    </VBox>
 </AnchorPane>

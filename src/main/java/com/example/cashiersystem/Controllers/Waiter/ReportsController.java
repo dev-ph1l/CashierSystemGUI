@@ -171,8 +171,6 @@ public class ReportsController implements Initializable {
         Model.getInstance().getReport().dateProperty().set(formattedDate);
     }
 
-
-
     public void showDailyReport() {
         Report report =  Model.getInstance().getReport();
 

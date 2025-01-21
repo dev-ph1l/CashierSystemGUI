@@ -15,31 +15,31 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1000.0" styleClass="reservation" stylesheets="@../../Styles/Reservation.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cashiersystem.Controllers.Waiter.ReservationController">
     <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservation Manager" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="15.0" />
-    <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="guest_info_container" AnchorPane.bottomAnchor="300.0"
-                AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="610.0" AnchorPane.topAnchor="45.0">
-        <VBox layoutY="108.0" prefHeight="357.0" prefWidth="380.0" styleClass="guest_info_container_inner"
-              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-              AnchorPane.topAnchor="90.0">
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Guest Name"/>
-            <TextField fx:id="guest_name_field"/>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ammount"/>
-            <ChoiceBox fx:id="guest_amm_selector" prefWidth="150.0"/>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Notes"/>
-            <TextArea fx:id="notes_text_area" prefHeight="150.0" prefWidth="390.0"/>
+    <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="guest_info_container" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="610.0" AnchorPane.topAnchor="45.0">
+        <VBox layoutY="108.0" prefHeight="357.0" prefWidth="380.0" styleClass="guest_info_container_inner" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Guest Name" />
+            <TextField fx:id="guest_name_field" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ammount" />
+            <ChoiceBox fx:id="guest_amm_selector" prefWidth="150.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Notes" />
+            <TextArea fx:id="notes_text_area" prefHeight="150.0" prefWidth="390.0" />
         </VBox>
-        <Text layoutX="32.0" layoutY="16.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Date and Time"
-              AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0"/>
-        <DatePicker fx:id="date_selector" layoutY="85.0" prefWidth="174.0" AnchorPane.leftAnchor="10.0"
-                    AnchorPane.topAnchor="40.0"/>
-        <ChoiceBox fx:id="time_selector" layoutX="233.0" layoutY="20.0" prefWidth="150.0" AnchorPane.leftAnchor="200.0"
-                   AnchorPane.topAnchor="40.0"/>
+        <Text layoutX="32.0" layoutY="16.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Date and Time" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0" />
+        <DatePicker fx:id="date_selector" layoutY="85.0" prefWidth="174.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="40.0" />
+        <ChoiceBox fx:id="time_selector" layoutX="233.0" layoutY="20.0" prefWidth="150.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="40.0" />
     </AnchorPane>
     <VBox layoutX="16.0" layoutY="500.0" prefHeight="200.0" prefWidth="100.0" styleClass="reservation_details_container" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="510.0">
         <Label fx:id="reservation_detail_lbl" text="Reservation Details for 22-22-2222:" />
         <TableView fx:id="reservation_details_table" prefHeight="257.0" prefWidth="980.0">
             <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn fx:id="time_column" prefWidth="188.0" text="Time" />
+                <TableColumn fx:id="name_column" prefWidth="137.0" text="Name" />
+            <TableColumn fx:id="table_column" minWidth="0.0" prefWidth="95.0" text="Table" />
+            <TableColumn fx:id="count_column" prefWidth="103.0" text="Count" />
+            <TableColumn fx:id="notes_column" prefWidth="280.0" text="Notes" />
+            <TableColumn fx:id="status_column" prefWidth="156.0" text="Status" />
+            <TableColumn fx:id="complete_btn_column" prefWidth="75.0" />
+            <TableColumn fx:id="cancel_btn_column" prefWidth="75.0" />
             </columns>
         </TableView>
     </VBox>

@@ -1,8 +1,12 @@
 package com.example.cashiersystem.Model;
 
+import com.example.cashiersystem.Views.WaiterEnums.ReservationStatus;
 import com.example.cashiersystem.Views.WaiterEnums.WaiterMenuOptions;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class DatabaseDriver {
@@ -253,7 +257,6 @@ public class DatabaseDriver {
     // returns item name corresponding to its id, used to display items added to an order in ItemPicker
     public String getItemName(int ItemId) {
 
-
         String getNamesQuery = "SELECT name FROM menu_items WHERE id = ?";
 
         String itemName = null;
@@ -285,6 +288,47 @@ public class DatabaseDriver {
             preparedStatement.setInt(4, Model.getInstance().getReservation().guestCountProperty().get());
             preparedStatement.setString(5, Model.getInstance().getReservation().notesProperty().get());
             preparedStatement.setString(6, Model.getInstance().getReservation().statusProperty().get());
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ObservableList<Reservation> loadTodayReservations() {
+        ObservableList<Reservation> reservations = FXCollections.observableArrayList();
+        String query = "SELECT * FROM reservations WHERE DATE(reservation_date) = CURDATE()";
+
+        try (Connection connection = DatabaseDriver.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int reservationId = resultSet.getInt("id");
+                String tableName = resultSet.getString("table_name");
+                String reservedBy = resultSet.getString("reserved_by");
+                LocalDateTime reservationTime = resultSet.getTimestamp("reservation_date").toLocalDateTime();
+                int guestCount = resultSet.getInt("guest_count");
+                String notes = resultSet.getString("notes");
+                String status = resultSet.getString("status");
+
+                reservations.add(new Reservation(reservationId, tableName, reservedBy, reservationTime, guestCount, notes, status));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return reservations;
+    }
+
+    public void updateReservationStatus(Reservation reservation) {
+        String query = "UPDATE reservations SET status = ? WHERE id = ?";
+
+        try (Connection connection = DatabaseDriver.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, reservation.getStatus().toString());
+            preparedStatement.setInt(2, reservation.reservationIdProperty().get());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
