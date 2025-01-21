@@ -4,6 +4,9 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
@@ -76,45 +79,19 @@
         </AnchorPane>
     </VBox>
     <VBox layoutX="510.0" prefHeight="760.0" prefWidth="480.0" styleClass="item_picker_food" AnchorPane.bottomAnchor="210.0" AnchorPane.leftAnchor="505.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
-        <AnchorPane prefHeight="580.0" prefWidth="480.0">
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-main-food" width="70.0" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="5.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-main-food" width="70.0" AnchorPane.leftAnchor="87.5" AnchorPane.topAnchor="5.0" />
-            <Button fx:id="burger_btn" layoutX="18.0" layoutY="25.0" mnemonicParsing="false" text="Burger" />
-            <Button fx:id="burger_witch_fries_btn" layoutX="92.0" layoutY="22.0" mnemonicParsing="false" text="Burger with Fries" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="159.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-main-food" width="70.0" AnchorPane.leftAnchor="167.5" AnchorPane.topAnchor="5.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="224.0" layoutY="-8.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-main-food" width="70.0" AnchorPane.leftAnchor="247.5" AnchorPane.topAnchor="5.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="336.0" layoutY="2.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-main-food" width="70.0" AnchorPane.leftAnchor="327.5" AnchorPane.topAnchor="5.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="400.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-snacks" width="70.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="5.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="407.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.rightAnchor="7.5" AnchorPane.topAnchor="85.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="328.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-snacks" width="70.0" AnchorPane.leftAnchor="327.5" AnchorPane.topAnchor="85.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="8.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-snacks" width="70.0" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="85.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="88.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-snacks" width="70.0" AnchorPane.leftAnchor="87.5" AnchorPane.topAnchor="85.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="168.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-snacks" width="70.0" AnchorPane.leftAnchor="167.5" AnchorPane.rightAnchor="247.0" AnchorPane.topAnchor="85.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="248.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-snacks" width="70.0" AnchorPane.leftAnchor="247.5" AnchorPane.rightAnchor="167.0" AnchorPane.topAnchor="85.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="407.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.rightAnchor="7.5" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="328.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="327.5" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="248.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="247.5" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="168.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="167.5" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="88.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="87.5" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="8.0" layoutY="235.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="245.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="407.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.rightAnchor="7.5" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="328.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="327.5" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="248.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="247.5" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="168.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="167.5" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="88.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="87.5" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="8.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="7.5" AnchorPane.topAnchor="165.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="8.0" layoutY="315.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.topAnchor="325.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="88.0" layoutY="325.0" stroke="BLACK" strokeType="INSIDE" width="70.0" AnchorPane.leftAnchor="87.5" AnchorPane.topAnchor="325.0" />
-            <Button fx:id="chicken_wings_btn" layoutX="172.0" layoutY="21.0" mnemonicParsing="false" text="Chicken Wings (6pcs)" />
-            <Button fx:id="nachos_cheese_btn" layoutX="252.0" layoutY="25.0" mnemonicParsing="false" text="Nachos Chees" />
-            <Button fx:id="club_sandwich_btn" layoutX="12.0" layoutY="105.0" mnemonicParsing="false" text="Club Sandwich" />
-            <Button fx:id="ceaser_salad_btn" layoutX="332.0" layoutY="25.0" mnemonicParsing="false" text="Ceaser Salad" />
-            <Button fx:id="mini_pizzas_btn" layoutX="411.0" layoutY="21.0" mnemonicParsing="false" text="Mini Pizzas (2 pcs)" />
-            <Button fx:id="cheese_platter_btn" layoutX="92.0" layoutY="105.0" mnemonicParsing="false" text="Cheese Platter" />
-            <Button fx:id="peanuts_btn" layoutX="172.0" layoutY="105.0" mnemonicParsing="false" text="Peanuts (Bowl)" />
-            <Button fx:id="pretzel_sticks_btn" layoutX="252.0" layoutY="105.0" mnemonicParsing="false" text="Pretzel Sticks" />
-            <Button fx:id="chips_btn" layoutX="338.0" layoutY="105.0" mnemonicParsing="false" text="Chips" />
-        </AnchorPane>
+            <GridPane prefHeight="540.0" prefWidth="485.0" fx:id="food_items">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints />
+              </rowConstraints>
+            </GridPane>
     </VBox>
     <VBox layoutX="14.0" layoutY="590.0" prefHeight="160.0" prefWidth="740.0" stylesheets="@../../Styles/ItemPicker.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="630.0">
         <TableView fx:id="selected_items_view" prefHeight="160.0" prefWidth="740.0" styleClass="item_picker" stylesheets="@../../Styles/ItemPicker.css">
