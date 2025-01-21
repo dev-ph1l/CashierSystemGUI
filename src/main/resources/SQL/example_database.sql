@@ -42,14 +42,12 @@ CREATE TABLE order_items (
 -- Table for reservation management
 CREATE TABLE reservations (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    table_id INT NOT NULL,
+    table_name VARCHAR(100) NOT NULL,
     reserved_by VARCHAR(100) NOT NULL,
-    reservation_date DATE NOT NULL,
-    reservation_time TIME NOT NULL,
+    reservation_date TIMESTAMP NOT NULL,
     guest_count INT NOT NULL,
     notes TEXT,
-    status ENUM('confirmed', 'cancelled', 'completed') DEFAULT 'confirmed',
-    FOREIGN KEY (table_id) REFERENCES tables(id)
+    status ENUM('confirmed', 'cancelled', 'completed') DEFAULT 'confirmed'
 );
 
 -- Table for unified account system
