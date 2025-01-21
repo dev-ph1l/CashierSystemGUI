@@ -1,14 +1,14 @@
 package com.example.cashiersystem.Model;
 
-import com.example.cashiersystem.Views.WaiterMenuOptions;
+import com.example.cashiersystem.Views.WaiterEnums.WaiterMenuOptions;
 
 import java.sql.*;
 import java.util.*;
 
 public class DatabaseDriver {
-    private static final String URL = "YourURL";
-    private static final String USER = "YoutUser";
-    private static final String PASSWORD = "YourPassword";
+    private static final String URL = "jdbc:mysql://localhost:3360/datenbank_boniersystem";
+    private static final String USER = "root";
+    private static final String PASSWORD = "Jsb9yfgMKZ58h5tj";
 
     /**
      *Establishes a connection to the database using the provided credentials.
@@ -272,6 +272,24 @@ public class DatabaseDriver {
         }
 
         return itemName;
+    }
+
+    public void createReservation() {
+        String query = "INSERT INTO reservations (table_name, reserved_by, reservation_date, guest_count, notes, status) VALUES (?, ?, ?, ?, ?, ?)";
+
+        try (Connection connection = DatabaseDriver.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, Model.getInstance().getReservation().tableNameProperty().get());
+            preparedStatement.setString(2, Model.getInstance().getReservation().reservedByProperty().get());
+            preparedStatement.setTimestamp(3, Timestamp.valueOf(Model.getInstance().getReservation().reservationTimeProperty().get()));
+            preparedStatement.setInt(4, Model.getInstance().getReservation().guestCountProperty().get());
+            preparedStatement.setString(5, Model.getInstance().getReservation().notesProperty().get());
+            preparedStatement.setString(6, Model.getInstance().getReservation().statusProperty().get());
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 

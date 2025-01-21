@@ -19,6 +19,7 @@
               <Button fx:id="dashboard_btn" mnemonicParsing="false" prefHeight="32.0" prefWidth="200.0" text="Dashboard" />
               <Button fx:id="orders_btn" mnemonicParsing="false" text="Oders" />
               <Button fx:id="reports_btn" mnemonicParsing="false" text="Reports" />
+            <Button fx:id="reservation_btn" mnemonicParsing="false" text="Reservation" />
          </children>
       </VBox>
     </AnchorPane>

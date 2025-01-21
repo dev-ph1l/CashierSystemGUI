@@ -2,6 +2,8 @@ package com.example.cashiersystem.Views;
 
 import com.example.cashiersystem.Controllers.Admin.AdminController;
 import com.example.cashiersystem.Controllers.Waiter.WaiterController;
+import com.example.cashiersystem.Views.AdminEnums.AdminMenuOptions;
+import com.example.cashiersystem.Views.WaiterEnums.WaiterMenuOptions;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +21,7 @@ public class ViewFactory {
     public AnchorPane ordersView;
     public AnchorPane reportsView;
     public AnchorPane itemPickerView;
+    public AnchorPane reservationView;
 
     // Admin Views
     private final ObjectProperty<AdminMenuOptions> adminSelectedMenuItem;
@@ -82,6 +85,17 @@ public class ViewFactory {
             }
         }
         return itemPickerView;
+    }
+
+    public AnchorPane getReservationView() {
+        if (reservationView == null) {
+            try {
+                reservationView = new FXMLLoader(getClass().getResource("/Fxml/Waiter/Reservation.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return reservationView;
     }
 
     public void showWaiterWindow() {

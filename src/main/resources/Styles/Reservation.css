@@ -1,0 +1,132 @@
+.reservation {
+    -fx-background-color: #EFE9E1;
+}
+
+.reservation Text {
+    -fx-font-family: "Lucida Console";
+    -fx-font-size: 18;
+    -fx-text-fill: #111111;
+}
+
+.reservation Button:hover {
+    -fx-cursor:hand;
+}
+
+/* styles for the guest info VBox*/
+.guest_info_container {
+    -fx-padding: 10 0 0 0;
+}
+
+.guest_info_container_inner {
+    -fx-padding: 10;
+    -fx-spacing: 17.5;
+}
+
+.guest_info_container Text {
+    -fx-font-family: "Lucida Console";
+    -fx-font-size: 14;
+    -fx-text-fill: #111111;
+}
+
+#time_selector, #date_selector, #guest_amm_selector {
+    -fx-background-color: "white";
+    -fx-pref-height: 30;
+}
+
+#time_selector .arrow, #guest_amm_selector .arrow {
+    -fx-background-color: #111111;
+}
+
+#date_selector .arrow-button {
+    -fx-background-color: white;
+}
+
+#guest_name_field {
+    -fx-background-color: "white";
+    -fx-pref-height: 20;
+    -fx-font-size: 18;
+}
+
+#notes_text_area {
+    -fx-background-color: "white";
+    -fx-pref-height: 130;
+}
+
+/* styles for the guest table VBox*/
+.guest_table_container {
+    -fx-border-color: #111111;
+    -fx-border-width: 2;
+    -fx-border-style: solid;
+}
+
+.guest_table_container Rectangle{
+    -fx-fill: #181C14;
+    -fx-stroke-width: 0;
+}
+
+.guest_table_container Text {
+    -fx-font-size: 14;
+}
+
+.table_btn {
+    -fx-background-color: #EFE9E1;
+    -fx-text-fill: #111111;
+    -fx-alignment:center;
+    -fx-pref-width: 65;
+    -fx-pref-height: 30;
+    -fx-font-size: 11;
+    -fx-font-family: "Lucida Console";
+}
+
+.table_bar_btn {
+    -fx-background-color: #EFE9E1;
+    -fx-text-fill: #111111;
+    -fx-alignment:center;
+    -fx-pref-width: 50;
+    -fx-pref-height: 20;
+    -fx-font-size: 11;
+    -fx-font-family: "Lucida Console";
+}
+
+/* styles for buttons and indicators*/
+#confirm_btn {
+    -fx-background-color: "white";
+    -fx-text-fill: #111111;
+    -fx-alignment:center;
+    -fx-pref-width: 150;
+    -fx-pref-height: 30;
+    -fx-font-size: 18;
+    -fx-font-family: "Lucida Console";
+}
+#reset_btn {
+    -fx-background-color: #e14545;
+    -fx-text-fill: #111111;
+    -fx-alignment:center;
+    -fx-pref-width: 150;
+    -fx-pref-height: 30;
+    -fx-font-size: 18;
+    -fx-font-family: "Lucida Console";
+}
+
+#error_lbl {
+    -fx-text-fill: #FF0000;
+    -fx-font-size: 16;
+    -fx-font-family: "Lucida Console";
+}
+
+#selected_table_lbl {
+    -fx-font-size: 16;
+    -fx-font-family: "Lucida Console";
+}
+
+/* reservation details styles*/
+.reservation_details_container {
+    -fx-background-color: white;
+    -fx-padding: 10;
+}
+
+.reservation_details_container Label {
+    -fx-font-family: "Lucida Console";
+    -fx-font-size: 14;
+    -fx-text-fill: #111111;
+}
